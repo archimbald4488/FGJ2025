@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://pq0bncxy3ibp"]
+
+[ext_resource type="Texture2D" uid="uid://0bd7q8qfrrb" path="res://assets/FGJ Assets/02. Characters/FGJ25_Diplocaulus3.PNG" id="1_vr6bw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
+radius = 230.11
+height = 479.79
+
+[node name="Enemy" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vqcsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_vr6bw")
+offset = Vector2(60, -60)
