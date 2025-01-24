@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://hmga23hvrsvb"]
+[gd_scene load_steps=5 format=3 uid="uid://hmga23hvrsvb"]
 
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_1tk0n"]
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
@@ -427,6 +428,7 @@ texture = ExtResource("1_lkicu")
 sources/0 = SubResource("TileSetAtlasSource_0sjg1")
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_1tk0n")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hu0nq")
