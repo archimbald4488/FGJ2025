@@ -22,7 +22,7 @@ func spawn_enemy_with_bubble(camera: Camera2D, player_position: Vector2, cauldro
 
 # This function triggers the bubble animation
 func animate_bubble(cauldron_position: Vector2, target_position: Vector2):
-	var bubble_scene = preload("res://Bubble.tscn")  # Path to your bubble scene
+	var bubble_scene = preload("res://scenes/bubble.tscn")  # Path to your bubble scene
 	var bubble = bubble_scene.instantiate()
 	add_child(bubble)
 
