@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://pq0bncxy3ibp"]
+[gd_scene load_steps=3 format=3 uid="uid://ci5kgsdofmfsx"]
 
-[ext_resource type="Texture2D" uid="uid://0bd7q8qfrrb" path="res://assets/FGJ Assets/02. Characters/FGJ25_Diplocaulus3.PNG" id="1_vr6bw"]
+[ext_resource type="Texture2D" uid="uid://0bd7q8qfrrb" path="res://assets/FGJ Assets/02. Characters/FGJ25_Diplocaulus3.PNG" id="1_0f3ec"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
-radius = 230.11
-height = 479.79
+radius = 172.91
+height = 403.23
 
 [node name="Enemy" type="RigidBody2D"]
 collision_mask = 0
@@ -16,5 +16,5 @@ shape = SubResource("CapsuleShape2D_vqcsq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_vr6bw")
-offset = Vector2(60, -60)
+texture = ExtResource("1_0f3ec")
+offset = Vector2(100, -60)
