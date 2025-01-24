@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://h4s2yosgx8qy"]
+
+[ext_resource type="Script" path="res://pathfinding_demo/character_body_2d.gd" id="1_fc2vj"]
+[ext_resource type="Texture2D" uid="uid://cvveyu3mkstga" path="res://assets/FGJ Assets/01. FGJ25 Logo/FGJ25 logo - green@4x.png" id="2_5lyk4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_13rax"]
+vertices = PackedVector2Array(424.219, 152.867, 281.617, 144.023, 281.633, 144.023, 159.5, 136.258, 113.93, 88.9375, 131.281, 11.6797, 263.68, 116.117, 444.813, 109.867, 495.617, 121.992, 528.672, 39, 587.227, 73, 659.75, 39, 647.531, 123.258, 718.078, 123.352, 608.273, 178.211, 660.602, 217.859, 592.438, 245.281, 375.75, 244.461, 375.75, 244.453, 475.492, 280.281, 413.563, 293.93, 672.102, 299.539, 622.594, 323.867, 710.461, 350.977, 790.242, 321.117, 790.672, 350.039, 892.094, 237.047, 849.469, 288.391, 853.492, 208.07, 921.398, 164.781, 903.742, 239.32, 926.563, 311.219, 980.148, 303.391, 987.563, 404.43, 895.922, 395.477, 879.461, 466.07, 748.211, 458.93, 732.391, 531.758, 622.922, 463.039, 509.781, 507.352, 469.102, 424.313, 416.68, 438.219, 519.063, 346.094, 441.656, 359.477, 281.977, 212.219, 217.594, 296.039, 147, 230.406, 115.32, 373.68, 73.6563, 312.797)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 2), PackedInt32Array(0, 2, 6, 7, 8), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(10, 9, 11), PackedInt32Array(12, 10, 11, 13), PackedInt32Array(14, 12, 13, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(16, 15, 21, 22), PackedInt32Array(23, 22, 21, 24, 25), PackedInt32Array(26, 27, 25, 24, 28, 29), PackedInt32Array(30, 26, 29), PackedInt32Array(31, 30, 29, 32, 33), PackedInt32Array(34, 31, 33, 35), PackedInt32Array(36, 34, 35, 37), PackedInt32Array(38, 36, 37, 39), PackedInt32Array(40, 38, 39, 41), PackedInt32Array(42, 40, 41, 43, 19), PackedInt32Array(19, 43, 20), PackedInt32Array(44, 17, 20, 45, 46), PackedInt32Array(46, 45, 47, 48)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(125, -6, 267, 106, 441, 100, 525, 29, 665, 29, 730, 123, 671, 220, 681, 291, 785, 310, 846, 201, 926, 150, 990, 301, 998, 410, 884, 475, 734, 542, 506, 517, 405, 442, 431, 360, 407, 304, 221, 306, 113, 388, 61, 312, 142, 221, 283, 202, 379, 235, 482, 272, 531, 346, 485, 418, 624, 453, 746, 449, 888, 388, 916, 311, 896, 248, 857, 295, 795, 360, 709, 361, 615, 332, 582, 246, 599, 174, 634, 125, 586, 85, 500, 131, 426, 163, 281, 154, 155, 146, 103, 92)])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bcme"]
+
+[node name="map" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_13rax")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(146, 55)
+script = ExtResource("1_fc2vj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_5lyk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_3bcme")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
