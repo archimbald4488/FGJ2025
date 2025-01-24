@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3xoqv8igb4tx"]
+
+[ext_resource type="Texture2D" uid="uid://cli5a8df4tib" path="res://assets/FGJ Assets/02. Characters/FGJ25_Tadpole1.png" id="1_jd3w3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
+radius = 86.78
+height = 479.79
+
+[node name="TadpoleEnemy" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vqcsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_jd3w3")
+offset = Vector2(0, -40)
