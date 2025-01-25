@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4lg643btasi1"]
 
 [ext_resource type="Texture2D" uid="uid://0bd7q8qfrrb" path="res://assets/FGJ Assets/02. Characters/FGJ25_Diplocaulus3.PNG" id="1_0f3ec"]
+[ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="1_u6k1c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
 radius = 192.05
 height = 422.38
 
 [node name="LiskoEnemy" type="CharacterBody2D"]
-collision_mask = 0
+collision_layer = 4
+collision_mask = 10
 motion_mode = 1
 metadata/_edit_group_ = true
 
