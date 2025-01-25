@@ -16,6 +16,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	print("Hit")

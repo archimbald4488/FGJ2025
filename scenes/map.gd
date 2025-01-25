@@ -1,13 +1,16 @@
 extends Node2D
 
 @onready var cauldron = $Cauldron  # Reference to the cauldron scene
+@export var spawn_interval: float = 3.0  # Time in seconds between spawns
 
 func _ready():
-	# Initialize game logic or set up spawn timer
-	pass
+	# Example of spawning an enemy with a bubble after 3 seconds
+	await get_tree().create_timer(3.0).timeout  # Wait 3 seconds
+	await spawn_enemy_with_bubble($Camera2D, $Player.position, $Cauldron.position, 100)
+
 
 # This function can be used to spawn an enemy and animate the bubble
-func spawn_enemy_with_bubble(camera: Camera2D, player_position: Vector2, cauldron_position: Vector2, min_distance: float):
+func spawn_enemy_with_bubble(camera: Camera2D, player_position: Vector2, cauldron_position: Vector2, min_distance: float): #camera: Camera2D
 	# Get a random spawn position within the camera's view, ensuring it's not too close to the player
 	var spawn_position = get_random_spawn_position(camera, player_position, min_distance)
 
@@ -20,7 +23,7 @@ func spawn_enemy_with_bubble(camera: Camera2D, player_position: Vector2, cauldro
 	# Now spawn the enemy at the spawn position
 	spawn_enemy_at_position(spawn_position)
 
-# This function triggers the bubble animation
+# This function triggers the bubble movement
 func animate_bubble(cauldron_position: Vector2, target_position: Vector2):
 	var bubble_scene = preload("res://scenes/bubble.tscn")  # Path to your bubble scene
 	var bubble = bubble_scene.instantiate()
@@ -47,10 +50,8 @@ func get_random_spawn_position(camera: Camera2D, player_position: Vector2, min_d
 
 # This function spawns an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
-	# Add your logic to spawn the enemy here
 	print("Enemy spawned at: ", position)
-	# For example, you can instantiate an enemy scene and set its position
-	# var enemy_scene = preload("res://Enemy.tscn")
-	# var enemy = enemy_scene.instantiate()
-	# enemy.position = position
-	# add_child(enemy)
+	var enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
+	var enemy = enemy_scene.instantiate()
+	enemy.position = position
+	add_child(enemy)

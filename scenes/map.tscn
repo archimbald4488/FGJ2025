@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://hmga23hvrsvb"]
+[gd_scene load_steps=7 format=3 uid="uid://hmga23hvrsvb"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_1tk0n"]
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
@@ -452,8 +452,6 @@ scale = Vector2(0.2, 0.2)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-
 [node name="LiskoEnemy" parent="." instance=ExtResource("3_3orv7")]
 position = Vector2(155, 112)
 scale = Vector2(0.1, 0.1)
-
