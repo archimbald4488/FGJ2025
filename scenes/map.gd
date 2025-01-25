@@ -21,6 +21,7 @@ func new_game():
 	$Cauldron.camera = $Player/Camera2D
 	$Cauldron.player = $Player
 	$Player.show()
+	$Player.health = 10
 	$Player.start()
 	$Cauldron.start_spawning()
 
