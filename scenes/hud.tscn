@@ -116,6 +116,7 @@ offset_right = 306.0
 offset_bottom = -45.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
+max_value = 10.0
 fill_mode = 1
 
 [node name="DamageText" type="Label" parent="InGameHUD"]
