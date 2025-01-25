@@ -13,6 +13,8 @@ func _ready():
 	
 
 func start():
+	$MenuMusic.stop()
+	$GameMusic.play()
 	is_ready = true
 
 	
