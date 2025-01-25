@@ -41,6 +41,7 @@ func _health_changed(new_health: int):
 
 func _dead():
 	print("Dead")
+	Camera2D/HUD.update_score(1)
 	queue_free()
 
 func take_damage(amount: int):
