@@ -38,9 +38,10 @@ func _physics_process(delta):
 	
 
 func _on_attack_body_entered(body: Node2D) -> void:
+	print("Body entered:", body)
 	if body.is_in_group("Enemy"):
+		print("Hit enemy:", body)
 		body.health -= damage
-		print(body.health)
 		if body.health <= 0:
 			print("enemy died")
 			body.queue_free()
