@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 signal player_died
-@export var speed = 400
+
+@export var speed = 200
 @export var health: int
 @export var damage: int
 @export var accel = 5000
@@ -99,4 +100,12 @@ func _physics_process(delta):
 func _on_attack_body_entered(body: Node2D) -> void:
 	print("Body entered:", body)
 	if body.is_in_group("Enemy"):
-		body.take_damage(damage)
+		print("Hit enemy:", body)
+		body.health -= damage
+		if body.health <= 0:
+			print("enemy died")
+			$Camera2D/HUD.update_score(1)
+			body.queue_free()
+
+func _on_attack_new_animation_finished(anim_name: StringName) -> void:
+	$Sprite2D.play("Idle animation")
