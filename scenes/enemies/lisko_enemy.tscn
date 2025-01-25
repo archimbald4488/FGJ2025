@@ -1,71 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4lg643btasi1"]
+[gd_scene load_steps=4 format=3 uid="uid://d4lg643btasi1"]
 
+[ext_resource type="Texture2D" uid="uid://0bd7q8qfrrb" path="res://assets/FGJ Assets/02. Characters/FGJ25_Diplocaulus3.PNG" id="1_0f3ec"]
 [ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="1_u6k1c"]
-[ext_resource type="Texture2D" uid="uid://cxp6gp7dumndx" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_rdma8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdjtt"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(0, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d3mq4"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(96, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ek0o"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(192, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g5jx5"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(288, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_28c8t"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(384, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_735ua"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(480, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x44mv"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(576, 0, 96, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2fth"]
-atlas = ExtResource("2_rdma8")
-region = Rect2(672, 0, 96, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_snvma"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdjtt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d3mq4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ek0o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g5jx5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_28c8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_735ua")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x44mv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p2fth")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
+radius = 192.05
+height = 422.38
 
 [node name="LiskoEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
@@ -75,17 +15,12 @@ script = ExtResource("1_u6k1c")
 damage = 1
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(1.13533, -0.28904)
-scale = Vector2(1.02934, 1.00717)
-polygon = PackedVector2Array(-22.476, -39.4282, -24, 22, 25, 21, 25, -39)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vqcsq")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-309.875, 164.688)
-scale = Vector2(3.09375, 2.95313)
-sprite_frames = SubResource("SpriteFrames_snvma")
-autoplay = "default"
-frame_progress = 0.561095
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_0f3ec")
 offset = Vector2(100, -60)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
