@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 signal player_died
+@export var speed = 400
+@export var health: int
+@export var damage: int
 
 @export var speed = 200
 @export var health: int
