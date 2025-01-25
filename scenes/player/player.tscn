@@ -180,9 +180,8 @@ position = Vector2(58, -25)
 rotation = 1.5708
 scale = Vector2(6, 6.323)
 sprite_frames = SubResource("SpriteFrames_74g05")
-animation = &"Idle animation"
+animation = &"Attack animation"
 autoplay = "Idle animation"
-frame_progress = 0.875302
 
 [node name="Attack2" type="Area2D" parent="Sprite2D"]
 position = Vector2(-2.75, 4.50735)
