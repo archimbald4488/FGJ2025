@@ -14,7 +14,8 @@ func get_input():
 	velocity = input_direction * speed
 	rotation = velocity.angle()
 	if Input.is_action_just_pressed("attack"):
-		$Attack.play("attack")
+		$AttackNew.play("AttackNew")
+		$Sprite2D.play("Attack animation")
 		print("attack")
 
 func _physics_process(delta):

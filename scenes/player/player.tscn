@@ -162,9 +162,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f27be")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack animation",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -240,15 +240,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csgm2"]
+size = Vector2(99, 72)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqle"]
 size = Vector2(89, 127)
 
-[sub_resource type="Animation" id="Animation_u8ied"]
+[sub_resource type="Animation" id="Animation_obhhh"]
+resource_name = "AttackNew"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack2/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.1181),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_rjbys"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Attack2/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -258,29 +276,11 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_5iork"]
-resource_name = "attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_64o0e"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xmyx"]
 _data = {
-"RESET": SubResource("Animation_u8ied"),
-"attack": SubResource("Animation_5iork")
+"AttackNew": SubResource("Animation_obhhh"),
+"RESET": SubResource("Animation_rjbys")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_csgm2"]
-size = Vector2(99, 72)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(614, 294)
@@ -296,26 +296,27 @@ scale = Vector2(6, 6.323)
 sprite_frames = SubResource("SpriteFrames_74g05")
 animation = &"Attack animation"
 autoplay = "Idle animation"
-frame_progress = 0.236718
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, -2.5)
-shape = SubResource("RectangleShape2D_5mqle")
-
-[node name="Attack" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_64o0e")
-}
-
-[node name="Attack2" type="Area2D" parent="."]
-position = Vector2(-5.5, -3.5)
+[node name="Attack2" type="Area2D" parent="Sprite2D"]
+position = Vector2(-2.75, 4.50735)
+scale = Vector2(0.166667, 0.158153)
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Attack2"]
 position = Vector2(94.5, -0.5)
 shape = SubResource("RectangleShape2D_csgm2")
 disabled = true
 debug_color = Color(0.998738, 0, 0.133982, 0.42)
 
-[connection signal="body_entered" from="Attack2" to="." method="_on_attack_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, -2.5)
+shape = SubResource("RectangleShape2D_5mqle")
+
+[node name="AttackNew" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_8xmyx")
+}
+
+[connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_body_entered"]
