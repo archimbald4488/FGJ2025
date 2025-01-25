@@ -444,7 +444,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-321, -145, -128, -335, 119, -335, 303, -133, 294, 91, 135, 293, -109, 293, -319, 98)])
 
 [node name="Map" type="Node2D"]
-position = Vector2(1, 1)
+script = ExtResource("1_1tk0n")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 1)
@@ -470,6 +470,5 @@ target_to_chase = NodePath("../Player")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_3dywq")
 
-[node name="Cauldron" parent="." instance=ExtResource("4_h5mq3")]
-position = Vector2(-1, -2)
-scale = Vector2(0.5, 0.5)
+[node name="Cauldron" parent="." instance=ExtResource("5_22xbv")]
+script = ExtResource("6_2idbb")
