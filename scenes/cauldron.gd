@@ -86,6 +86,6 @@ func spawn_enemy_at_position(position: Vector2):
 	var collision = enemy.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
 	collision.connect("body_entered", Callable(player, "_on_attack_body_entered"))
 
-	enemy.target_to_chase = player
+	enemy.chase_target = player
 	enemy.scale = Vector2(0.07, 0.07)
 	add_child(enemy)
