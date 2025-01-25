@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
 @export var speed = 400
+@export var health: int
+@export var damage: int
 
-func _ready() -> void:
+
+func _ready():
 	print("Start")
+
 	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -19,4 +23,10 @@ func _physics_process(delta):
 	
 
 func _on_attack_body_entered(body: Node2D) -> void:
-	print("Hit")
+	if body.is_in_group("Enemy"):
+		body.health -= damage
+		print(body.health)
+		if body.health <= 0:
+			print("enemy died")
+			body.queue_free()
+		

@@ -7,11 +7,13 @@
 radius = 192.05
 height = 422.38
 
-[node name="LiskoEnemy" type="CharacterBody2D"]
+[node name="LiskoEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_u6k1c")
+health = 2
+damage = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
