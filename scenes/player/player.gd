@@ -16,7 +16,8 @@ func get_input():
 	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
 	look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("attack"):
-		$Attack.play("attack")
+		$AttackNew.play("AttackNew")
+		$Sprite2D.play("Attack animation")
 		print("attack")
 	return input.normalized()
 	
