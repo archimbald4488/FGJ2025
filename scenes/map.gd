@@ -3,6 +3,7 @@ extends Node2D
 @onready var cauldron = $Cauldron  # Reference to the cauldron node
 @onready var player = $Player  # Reference to the player node
 @onready var camera = $Player/Camera2D  # Reference to the camera node
+@onready var hud = $Player/Camera2D/HUD
 
 @export var spawn_interval: float = 3.0  # Time in seconds between spawns
 @export var min_spawn_distance: float = 100.0  # Minimum distance from the player for spawn
@@ -12,11 +13,13 @@ extends Node2D
 func _ready():
 	#new_game()
 	$Player.hide()
+	hud.connect("start_game", Callable(self, "_on_start_game"))
 
 func new_game():
 	$Player.position = $StartPosition.position
 	$Player.show()
 	start_spawning()
+
 
 func start_spawning():
 	var timer = Timer.new()
