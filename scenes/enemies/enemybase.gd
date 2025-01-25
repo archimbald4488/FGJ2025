@@ -7,9 +7,9 @@ var movement: Movement
 
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @export var chase_target: CharacterBody2D
-@export var max_health: int = 100
-@export var max_speed: int = 180
-@export var damage: int = 1
+@export var max_health: int
+@export var max_speed: int
+@export var damage: int
 
 
 func _init():
