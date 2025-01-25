@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 [ext_resource type="PackedScene" uid="uid://dq1xnliwhi688" path="res://scenes/player/player.tscn" id="2_2hccj"]
 [ext_resource type="PackedScene" uid="uid://d4lg643btasi1" path="res://scenes/enemies/lisko_enemy.tscn" id="3_3orv7"]
+[ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/Cauldron.tscn" id="4_h5mq3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
 texture = ExtResource("1_lkicu")
@@ -437,7 +438,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0sjg1")
 
 [node name="Map" type="Node2D"]
-script = ExtResource("1_1tk0n")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 1)
@@ -455,3 +455,4 @@ position_smoothing_enabled = true
 [node name="LiskoEnemy" parent="." instance=ExtResource("3_3orv7")]
 position = Vector2(155, 112)
 scale = Vector2(0.1, 0.1)
+
