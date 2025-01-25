@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq1xnliwhi688"]
 
-[ext_resource type="Script" path="res://Scenes/player/player.gd" id="1_r6wso"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_r6wso"]
 [ext_resource type="Texture2D" uid="uid://boptgkjamnnt0" path="res://icon.svg" id="2_r0s77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csgm2"]
@@ -48,7 +48,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(614, 294)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_r6wso")
 health = 5
 damage = 1
