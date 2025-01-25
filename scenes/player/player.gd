@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_died
+
 @export var speed = 200
 @export var health: int
 @export var damage: int
@@ -75,6 +77,20 @@ func _physics_process(delta):
 		velocity = velocity.limit_length(speed)
 	move_and_slide()
 	
+	# Check if any collisions occurred
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+
+		var collided_object = collision.get_collider()
+		if collided_object and collided_object.is_in_group("Enemy"):
+			print("Collided with an enemy!")
+			health -= 1
+			if health <= 0:
+				print("player died.")
+				game_over()
+				emit_signal("player_died")
+				
+	
 #Check if enemy is in attack hitbox and deal damage
 func _on_attack_body_entered(body: Node2D) -> void:
 	print("Body entered:", body)
@@ -84,4 +100,3 @@ func _on_attack_body_entered(body: Node2D) -> void:
 		if body.health <= 0:
 			print("enemy died")
 			body.queue_free()
-		

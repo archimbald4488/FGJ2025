@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cp84t5412c2l7" path="res://scenes/hud.tscn" id="4_wihdx"]
 [ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/cauldron.tscn" id="5_22xbv"]
 [ext_resource type="Script" path="res://scenes/cauldron.gd" id="6_2idbb"]
-[ext_resource type="PackedScene" uid="uid://bkp07ucalvdqe" path="res://scenes/powerups/powerup.tscn" id="7_tccl7"]
 [ext_resource type="AudioStream" uid="uid://351cv7k5vs5f" path="res://assets/Music/Something Brewing.wav" id="6_wawty"]
 [ext_resource type="AudioStream" uid="uid://vbf1lqlcqwfm" path="res://assets/Music/Boiling point.wav" id="7_0uqrk"]
 [ext_resource type="AudioStream" uid="uid://bqmaohmvxs6fn" path="res://assets/Music/FGJ3.wav" id="7_cmvh3"]
@@ -460,11 +459,10 @@ layer_0/tile_data = PackedInt32Array(-1, 983040, 4, -65536, 983040, 4, 0, 983040
 [node name="Player" parent="." instance=ExtResource("2_2hccj")]
 position = Vector2(-1, 34)
 scale = Vector2(0.2, 0.2)
-health = 0
+health = 10
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="HUD" parent="Player/Camera2D" instance=ExtResource("4_wihdx")]
@@ -498,11 +496,8 @@ polygon = PackedVector2Array(0, -121, 42, -117, 81, -95, 106, -67, 125, -31, 130
 [node name="Cauldron" parent="." instance=ExtResource("5_22xbv")]
 script = ExtResource("6_2idbb")
 
-[node name="powerup" parent="." instance=ExtResource("7_tccl7")]
-position = Vector2(235, 63)
-scale = Vector2(0.1, 0.1)
-
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(-170, 0)
 
+[connection signal="player_died" from="Player" to="Player/Camera2D/HUD" method="show_game_over"]
 [connection signal="start_game" from="Player/Camera2D/HUD" to="." method="new_game"]

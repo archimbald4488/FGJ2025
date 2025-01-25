@@ -66,3 +66,7 @@ func _on_pause_button_pressed() -> void:
 	else:
 		get_tree().paused = true  # Pause the game
 		pause_button.text = "Resume"  # Change button text to "Resume"
+		
+func _on_timer_timeout():
+	$BigMessage.hide()
+	$SmallMessage.hide()
