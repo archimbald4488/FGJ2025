@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq1xnliwhi688"]
+
+[ext_resource type="Script" path="res://Scenes/player/player.gd" id="1_r6wso"]
+[ext_resource type="Texture2D" uid="uid://boptgkjamnnt0" path="res://icon.svg" id="2_r0s77"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csgm2"]
+size = Vector2(99, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqle"]
+size = Vector2(120, 120)
+
+[sub_resource type="Animation" id="Animation_u8ied"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Attack/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5iork"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Attack/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_64o0e"]
+_data = {
+"RESET": SubResource("Animation_u8ied"),
+"attack": SubResource("Animation_5iork")
+}
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(614, 294)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_r6wso")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r0s77")
+
+[node name="Attack" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Attack"]
+position = Vector2(100, 0)
+shape = SubResource("RectangleShape2D_csgm2")
+disabled = true
+debug_color = Color(0.998738, 0, 0.133982, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5mqle")
+
+[node name="Attack" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_64o0e")
+}
+
+[connection signal="body_entered" from="Sprite2D/Attack" to="." method="_on_attack_body_entered"]
