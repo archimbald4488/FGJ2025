@@ -1,4 +1,4 @@
-# enemy-base.gddd
+# enemy-base.gd
 extends CharacterBody2D
 class_name EnemyBase
 
@@ -17,7 +17,7 @@ func _init():
 	self.health = Health.from_args(max_health)
 	self.health.health_changed.connect(_health_changed)
 	self.health.dead.connect(_dead)
-	self.movement = Movement.from_args(max_speed, 30, 0.1)
+	self.movement = Movement.from_args(max_speed, 90, 0.1)
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -28,11 +28,14 @@ func wait_for_physics() -> void:
 	set_physics_process(true)
 
 func _physics_process(delta:float) -> void:
-	if navigation.is_navigation_finished() and chase_target.position == navigation.target_position:
+	if navigation.is_navigation_finished() and chase_target.global_position == navigation.target_position:
 		return
-	navigation.target_position = chase_target.position
-	var next_position = position.direction_to(navigation.get_next_path_position())
-	velocity = movement.update_movement(next_position, delta)
+		
+	navigation.target_position = chase_target.global_position
+	var next_position = global_position.direction_to(navigation.get_next_path_position())
+	#var new_velocity = movement.update_movement(next_position, delta)
+	velocity = global_position.direction_to(navigation.get_next_path_position()) * max_speed
+	#velocity = global_position.direction_to(new_position)
 	rotation = velocity.angle()
 	move_and_slide()
 

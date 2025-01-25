@@ -3,19 +3,21 @@ extends Object
 class_name Movement
 
 # Current Variables
-var current_vector: Vector2 = Vector2.ZERO
-var current_speed: float = 0
+var current_vector: Vector2
+var current_speed: float
 
 # Consts
-@export var max_speed: float = 180
-@export var acceleration: float = 30
-@export var friction: float = 0.1
+@export var max_speed: float
+@export var acceleration: float 
+@export var friction: float
 
 static func from_args(max_speed:float, acceleration:float, friction: float) -> Movement:
 	var movement = Movement.new()
 	movement.max_speed = max_speed
 	movement.acceleration = acceleration
 	movement.friction = friction
+	movement.current_speed = 0
+	movement.current_vector = Vector2.ZERO
 	return movement
 
 func _update_direction(target_direction: Vector2, delta:float):
