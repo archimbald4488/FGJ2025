@@ -89,7 +89,7 @@ position = Vector2(0, -0.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_f4tfd")
 autoplay = "default"
-frame_progress = 0.169864
+frame_progress = 0.344393
 
 [node name="RuikkuParticles" type="GPUParticles2D" parent="StaticBody2D"]
 modulate = Color(0.6, 0.145098, 0.454902, 0.815686)
