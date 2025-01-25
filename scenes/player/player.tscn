@@ -1,14 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://dq1xnliwhi688"]
+[gd_scene load_steps=26 format=3 uid="uid://dq1xnliwhi688"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_r6wso"]
-[ext_resource type="Texture2D" uid="uid://bufwf6hdfoau4" path="res://assets/player-sprite/attack-charge.png" id="3_kj428"]
+[ext_resource type="Texture2D" uid="uid://rk3wfyy4r1q1" path="res://assets/player-sprite/bonk1.png" id="2_yr82a"]
+[ext_resource type="Texture2D" uid="uid://c1f1eupyu6tpe" path="res://assets/player-sprite/bonk2.png" id="3_2k0pl"]
 [ext_resource type="Texture2D" uid="uid://dw08k41kc32b6" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_death_strip13.png" id="3_nxb7p"]
-[ext_resource type="Texture2D" uid="uid://dps5k8dddb56j" path="res://assets/player-sprite/attack-hit.png" id="4_dr7w4"]
-[ext_resource type="Texture2D" uid="uid://ik1b66ptkoib" path="res://assets/player-sprite/attack-charge-after.png" id="4_xia6d"]
-[ext_resource type="Texture2D" uid="uid://dwrrnrkatmijo" path="res://assets/player-sprite/idle-stance.png" id="4_yetc0"]
-[ext_resource type="Texture2D" uid="uid://d1eq3hic2ct6x" path="res://assets/player-sprite/idle-lean-1.png" id="5_l8i0h"]
-[ext_resource type="Texture2D" uid="uid://dd63sd15utens" path="res://assets/player-sprite/attack-hit-after.png" id="6_phl84"]
-[ext_resource type="Texture2D" uid="uid://cdhrvq4y45b4w" path="res://assets/player-sprite/idle-lean-2.png" id="6_raa3t"]
+[ext_resource type="Texture2D" uid="uid://bdyxqtvibqy1h" path="res://assets/player-sprite/bonk3.png" id="4_osceh"]
+[ext_resource type="Texture2D" uid="uid://bq3b7jilm234m" path="res://assets/player-sprite/idle2.png" id="6_p3hrd"]
+[ext_resource type="Texture2D" uid="uid://dr7hjpnlkowv7" path="res://assets/player-sprite/idle1.png" id="7_hqf7i"]
+[ext_resource type="Texture2D" uid="uid://depuwb8or1tkx" path="res://assets/player-sprite/idle3.png" id="8_8be5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vr4k"]
 atlas = ExtResource("3_nxb7p")
@@ -58,26 +57,17 @@ region = Rect2(0, 0, 49, 34)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_yetc0")
+"texture": ExtResource("2_yr82a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kj428")
+"texture": ExtResource("3_2k0pl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xia6d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_dr7w4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_phl84")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_yetc0")
+"texture": ExtResource("4_osceh")
 }],
 "loop": false,
 "name": &"Attack animation",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -119,30 +109,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_yetc0")
+"texture": ExtResource("7_hqf7i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_l8i0h")
+"texture": ExtResource("6_p3hrd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_yetc0")
+"texture": ExtResource("7_hqf7i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_raa3t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_yetc0")
+"texture": ExtResource("8_8be5l")
 }],
 "loop": true,
 "name": &"Idle animation",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csgm2"]
-size = Vector2(136.5, 155)
+size = Vector2(206.999, 267.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mqle"]
-size = Vector2(241, 309)
+size = Vector2(241, 286)
 
 [sub_resource type="Animation" id="Animation_obhhh"]
 resource_name = "AttackNew"
@@ -186,14 +173,13 @@ collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_r6wso")
 health = 5
-damage = 1
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(58, -25)
 rotation = 1.5708
 scale = Vector2(6, 6.323)
 sprite_frames = SubResource("SpriteFrames_74g05")
-animation = &"Idle animation"
+animation = &"Attack animation"
 autoplay = "Idle animation"
 
 [node name="Attack2" type="Area2D" parent="Sprite2D"]
@@ -203,13 +189,13 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Attack2"]
-position = Vector2(5.50003, -197)
+position = Vector2(25.4992, -250.5)
 shape = SubResource("RectangleShape2D_csgm2")
 disabled = true
 debug_color = Color(0.998738, 0, 0.133982, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(25.5, -22.5)
+position = Vector2(25.5, -11)
 shape = SubResource("RectangleShape2D_5mqle")
 
 [node name="AttackNew" type="AnimationPlayer" parent="."]

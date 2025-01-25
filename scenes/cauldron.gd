@@ -4,8 +4,8 @@ extends Node2D
 @export var enemy_percentage = 0.8
 @export var camera: Camera2D
 @export var player: CharacterBody2D
-const SPAWN_MAX_RADIUS = 420
-const SPAWN_MIN_RADIUS = 50
+const SPAWN_MAX_RADIUS = 320
+const SPAWN_MIN_RADIUS = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -86,6 +86,6 @@ func spawn_enemy_at_position(position: Vector2):
 	var collision = enemy.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
 	collision.connect("body_entered", Callable(player, "_on_attack_body_entered"))
 
-	enemy.target_to_chase = player
+	enemy.chase_target = player
 	enemy.scale = Vector2(0.07, 0.07)
 	add_child(enemy)

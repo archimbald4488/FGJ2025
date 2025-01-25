@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 signal player_died
-
-@export var speed = 200
+@export var speed = 400
 @export var health: int
 @export var damage: int
 @export var accel = 5000
@@ -92,6 +91,7 @@ func _physics_process(delta):
 			if health <= 0:
 				print("player died.")
 				game_over()
+				OS.shell_open("https://www.youtube.com/watch?v=NUYvbT6vTPs&ab_channel=BilalG%C3%B6regen")
 				emit_signal("player_died")
 				
 	
@@ -99,14 +99,4 @@ func _physics_process(delta):
 func _on_attack_body_entered(body: Node2D) -> void:
 	print("Body entered:", body)
 	if body.is_in_group("Enemy"):
-		print("Hit enemy:", body)
-		body.health -= damage
-		if body.health <= 0:
-			print("enemy died")
-			body.queue_free()
-
-#func fire():
-	#var projectile_scene = preload("res://scenes/projectile/projectile.tscn")
-	#var b = projectile_scene.instantiate()
-	#add_child(b)
-	#b.transform = $Muzzle.global_transform
+		body.take_damage(damage)

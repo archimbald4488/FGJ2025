@@ -76,6 +76,8 @@ collision_layer = 4
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_u6k1c")
+max_health = 20
+max_speed = 180
 damage = 1
 metadata/_edit_group_ = true
 

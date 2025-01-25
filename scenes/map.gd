@@ -27,6 +27,7 @@ func new_game():
 	$Player.health = 10
 	$Player/Camera2D/HUD.update_health(10)
 	$Player/Camera2D/HUD.update_damage(1)
+	$Player/Camera2D/HUD.update_score(0)
 	$Player.start()
 	$Cauldron.start_spawning()
 	$Difficulty.start()
@@ -106,18 +107,19 @@ func spawn_powerup_at_position(position: Vector2):
 	
 
 # Spawn an enemy at the specified position
-func spawn_enemy_at_position(position: Vector2):
-	print("Enemy spawned at: ", position)
+func spawn_enemy_at_position(spawn_position: Vector2):
+	print("Enemy spawned at: ", spawn_position)
 	var enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
-	var enemy = enemy_scene.instantiate()
+	var enemy = enemy_scene.instantiate() 
 	enemy.position = position
 	enemy.add_to_group("Enemy", true)
 	# Connect the body_entered signal to the _on_attack_body_entered method
 	var collision = enemy.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
 	collision.connect("body_entered", Callable(player, "_on_attack_body_entered"))
-
-	enemy.target_to_chase = $Player
+	
+	enemy.chase_target= $Player
 	enemy.scale = Vector2(0.1, 0.1)
+	
 	add_child(enemy)
 
 
