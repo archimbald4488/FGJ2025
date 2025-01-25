@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_1tk0n"]
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 [ext_resource type="PackedScene" uid="uid://dq1xnliwhi688" path="res://scenes/player/player.tscn" id="2_2hccj"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_wihdx"]
-[ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/cauldron.tscn" id="5_22xbv"]
+[ext_resource type="PackedScene" uid="uid://cp84t5412c2l7" path="res://scenes/hud.tscn" id="4_wihdx"]
+[ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/Cauldron.tscn" id="5_22xbv"]
 [ext_resource type="Script" path="res://scenes/cauldron.gd" id="6_2idbb"]
 [ext_resource type="AudioStream" uid="uid://351cv7k5vs5f" path="res://assets/Music/Something Brewing.wav" id="6_wawty"]
 [ext_resource type="AudioStream" uid="uid://vbf1lqlcqwfm" path="res://assets/Music/Boiling point.wav" id="7_0uqrk"]
@@ -464,7 +464,6 @@ layer_2/tile_data = PackedInt32Array(589787, 786432, 8, 655323, 786432, 9, 78639
 position = Vector2(-1, 34)
 scale = Vector2(0.1, 0.1)
 health = 10
-damage = 1
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
