@@ -9,6 +9,7 @@ extends Node2D
 @export var min_spawn_distance: float = 100.0  # Minimum distance from the player for spawn
 @export var bubble_scene_path: String = "res://scenes/bubble.tscn"  # Path to the bubble scene
 @export var enemy_scene_path: String = "res://scenes/enemies/lisko_enemy.tscn"  # Path to the enemy scene
+@export var powerup_scene_path: String = "res://scenes/powerups/powerup.tscn"  # Path to the enemy scene
 
 func _ready():
 	#new_game()
@@ -45,8 +46,15 @@ func spawn_enemy_with_bubble():
 	# Delay to match bubble animation timing
 	await get_tree().create_timer(1.0).timeout
 
-	# Spawn the enemy at the calculated position
-	spawn_enemy_at_position(spawn_position)
+	# Spawn the enemy and powerups at the calculated position
+	var rng = randi_range(1, 2)
+	print(rng)
+	if rng == 1:
+		spawn_enemy_at_position(spawn_position)
+	elif rng == 2:
+		spawn_powerup_at_position(spawn_position)
+	else:
+		print("Failed to load enemy")
 
 # Animate a bubble moving from the cauldron to the target position
 func animate_bubble(cauldron_position: Vector2, target_position: Vector2):
@@ -77,6 +85,14 @@ func get_random_spawn_position(player_position: Vector2, min_distance: float) ->
 
 	return spawn_position
 
+# Spawn powerup at the specified position
+func spawn_powerup_at_position(position: Vector2):
+	print("Powerup spawned at: ", position)
+	var powerup_scene = preload("res://scenes/powerups/powerup.tscn")
+	var powerup = powerup_scene.instantiate()
+	powerup.position = position
+	add_child(powerup)
+	
 
 # Spawn an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
