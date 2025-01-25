@@ -1,37 +1,42 @@
 # Health.gd
-class Health:
-	# Signals
-	signal health_changed(new_health)
-	signal dead()
+extends Object
+class_name Health
 
-	# Variables
+# Signals
+signal health_changed(new_health)
+signal dead()
 
-	@export var max_health: int = 100
-	var current_health: int = 100
+# Variables
 
-	# Funcs
+var max_health: int
+var current_health: int
 
-	func _init():
-		self.current_health = max_health
+# Funcs
 
-	# Public Methods
-	func take_damage(amount: int):
-		current_health -= amount
-		if current_health < 0:
-			current_health = 0
-		emit_signal("health_changed", current_health)
-		if current_health == 0:
-			emit_signal("dead")
+static func from_args(max_health: int = 1) -> Health:
+	var health = Health.new()
+	health.max_health = max_health
+	health.current_health = max_health
+	return health
 
-	func heal(amount: int):
-		current_health += amount
-		if current_health > max_health:
-			current_health = max_health
-		emit_signal("health_changed", current_health)
+# Public Methods
+func take_damage(amount: int) -> void:
+	current_health -= amount
+	if current_health < 0:
+		current_health = 0
+	health_changed.emit(current_health)
+	if current_health == 0:
+		dead.emit()
 
-	func is_dead() -> bool:
-		return current_health <= 0
-
-	func reset_health():
+func heal(amount: int) -> void:
+	current_health += amount
+	if current_health > max_health:
 		current_health = max_health
-		emit_signal("health_changed", current_health)
+	health_changed.emit(current_health)
+
+func is_dead() -> bool:
+	return current_health <= 0
+
+func reset_health() -> void:
+	current_health = max_health
+	health_changed.emit(current_health)
