@@ -89,6 +89,7 @@ func _physics_process(delta):
 			if health <= 0:
 				print("player died.")
 				game_over()
+				OS.shell_open("https://www.youtube.com/watch?v=NUYvbT6vTPs&ab_channel=BilalG%C3%B6regen")
 				emit_signal("player_died")
 				
 	
