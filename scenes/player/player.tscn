@@ -173,6 +173,7 @@ collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_r6wso")
 health = 5
+damage = 1
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(58, -25)
