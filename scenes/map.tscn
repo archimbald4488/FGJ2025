@@ -461,12 +461,12 @@ position_smoothing_enabled = true
 
 [node name="LiskoEnemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("3_uiaia")]
 position = Vector2(-141, -72)
-scale = Vector2(0.1, 0.1)
 health = 0
 damage = 0
 target_to_chase = NodePath("../Player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, 1)
 navigation_polygon = SubResource("NavigationPolygon_3dywq")
 
 [node name="Cauldron" parent="." instance=ExtResource("4_h5mq3")]
