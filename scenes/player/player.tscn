@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dq1xnliwhi688"]
+[gd_scene load_steps=27 format=3 uid="uid://dq1xnliwhi688"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_r6wso"]
 [ext_resource type="Texture2D" uid="uid://rk3wfyy4r1q1" path="res://assets/player-sprite/bonk1.png" id="2_yr82a"]
@@ -133,6 +133,7 @@ size = Vector2(241, 286)
 
 [sub_resource type="Animation" id="Animation_obhhh"]
 resource_name = "AttackNew"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,6 +145,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_rjbys"]
@@ -160,11 +173,27 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k852u"]
+resource_name = "attack"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8xmyx"]
 _data = {
 "AttackNew": SubResource("Animation_obhhh"),
-"RESET": SubResource("Animation_rjbys")
+"RESET": SubResource("Animation_rjbys"),
+"attack": SubResource("Animation_k852u")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -180,9 +209,8 @@ position = Vector2(58, -25)
 rotation = 1.5708
 scale = Vector2(6, 6.323)
 sprite_frames = SubResource("SpriteFrames_74g05")
-animation = &"Idle animation"
+animation = &"Attack animation"
 autoplay = "Idle animation"
-frame_progress = 0.875302
 
 [node name="Attack2" type="Area2D" parent="Sprite2D"]
 position = Vector2(-2.75, 4.50735)
@@ -207,3 +235,4 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_body_entered"]
+[connection signal="animation_finished" from="AttackNew" to="." method="_on_attack_new_animation_finished"]
