@@ -1,9 +1,9 @@
 [gd_scene load_steps=42 format=3 uid="uid://dq1xnliwhi688"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_r6wso"]
-[ext_resource type="Texture2D" uid="uid://dwa465s5eo88r" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_axe_strip10.png" id="2_8opib"]
-[ext_resource type="Texture2D" uid="uid://bygp6tep2g21f" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_run_strip8.png" id="2_ndjrm"]
-[ext_resource type="Texture2D" uid="uid://dmija37gl8l6q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_death_strip13.png" id="3_nxb7p"]
+[ext_resource type="Texture2D" uid="uid://4kruff7554f1" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_axe_strip10.png" id="2_8opib"]
+[ext_resource type="Texture2D" uid="uid://djrr1qybw5qrg" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_run_strip8.png" id="2_ndjrm"]
+[ext_resource type="Texture2D" uid="uid://dw08k41kc32b6" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_death_strip13.png" id="3_nxb7p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jobj"]
 atlas = ExtResource("2_8opib")
