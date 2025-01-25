@@ -4,3 +4,4 @@
 
 # Audio files
 *.wav
+!*.wav.import
