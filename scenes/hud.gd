@@ -40,8 +40,12 @@ func update_health(value: float) -> void:
 
 # Update damage display
 func update_damage(value: int) -> void:
-	damage_text.text = str(value)
-
+	damage_text.text = "Your damage: " + str(value)
+	
+func update_score(value: int) -> void:
+	score += 1
+	$ScoreLabel.text = score
+	
 # Show game over message
 func show_game_over() -> void:
 	big_message("Game Over", 2)
@@ -66,3 +70,7 @@ func _on_pause_button_pressed() -> void:
 	else:
 		get_tree().paused = true  # Pause the game
 		pause_button.text = "Resume"  # Change button text to "Resume"
+		
+func _on_timer_timeout():
+	$BigMessage.hide()
+	$SmallMessage.hide()

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_died
+
 @export var speed = 200
 @export var health: int
 @export var damage: int
@@ -32,8 +34,10 @@ func _handle_music_on_start():
 
 	
 func get_input():
+	#Movement inputs
 	input.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
 	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
+	#Look at mouse direction
 	look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("attack"):
 		$AttackNew.play("AttackNew")
@@ -62,8 +66,7 @@ func _physics_process(delta):
 	if not is_ready:
 		return
 	input = get_input()
-	#rotation = atan2(velocity.y, velocity.x)
-	
+	#Movement
 	if input == Vector2.ZERO:
 		if velocity.length() + (friction * delta):
 			velocity -= velocity.normalized() * (friction * delta)
@@ -74,7 +77,22 @@ func _physics_process(delta):
 		velocity = velocity.limit_length(speed)
 	move_and_slide()
 	
+	# Check if any collisions occurred
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
 
+		var collided_object = collision.get_collider()
+		if collided_object and collided_object.is_in_group("Enemy"):
+			print("Collided with an enemy!")
+			health -= 1
+			$Camera2D/HUD.update_health(health)
+			if health <= 0:
+				print("player died.")
+				game_over()
+				emit_signal("player_died")
+				
+	
+#Check if enemy is in attack hitbox and deal damage
 func _on_attack_body_entered(body: Node2D) -> void:
 	print("Body entered:", body)
 	if body.is_in_group("Enemy"):
@@ -82,5 +100,5 @@ func _on_attack_body_entered(body: Node2D) -> void:
 		body.health -= damage
 		if body.health <= 0:
 			print("enemy died")
+			$Camera2D/HUD.update_score(1)
 			body.queue_free()
-		

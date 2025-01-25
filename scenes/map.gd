@@ -9,6 +9,7 @@ extends Node2D
 @export var min_spawn_distance: float = 100.0  # Minimum distance from the player for spawn
 @export var bubble_scene_path: String = "res://scenes/bubble.tscn"  # Path to the bubble scene
 @export var enemy_scene_path: String = "res://scenes/enemies/lisko_enemy.tscn"  # Path to the enemy scene
+@export var powerup_scene_path: String = "res://scenes/powerups/powerup.tscn"  # Path to the enemy scene
 
 func _ready():
 	#new_game()
@@ -16,10 +17,16 @@ func _ready():
 	hud.connect("start_game", Callable(self, "_on_start_game"))
 
 func new_game():
+	get_tree().call_group("Enemy", "queue_free")
 	$Player.position = $StartPosition.position
+	$Cauldron.camera = $Player/Camera2D
+	$Cauldron.player = $Player
 	$Player.show()
+	$Player.health = 10
+	$Player/Camera2D/HUD.update_health(10)
+	$Player/Camera2D/HUD.update_damage(1)
 	$Player.start()
-	start_spawning()
+	$Cauldron.start_spawning()
 
 
 func start_spawning():
@@ -45,8 +52,15 @@ func spawn_enemy_with_bubble():
 	# Delay to match bubble animation timing
 	await get_tree().create_timer(1.0).timeout
 
-	# Spawn the enemy at the calculated position
-	spawn_enemy_at_position(spawn_position)
+	# Spawn the enemy and powerups at the calculated position
+	var rng = randi_range(1, 2)
+	print(rng)
+	if rng == 1:
+		spawn_enemy_at_position(spawn_position)
+	elif rng == 2:
+		spawn_powerup_at_position(spawn_position)
+	else:
+		print("Failed to load enemy")
 
 # Animate a bubble moving from the cauldron to the target position
 func animate_bubble(cauldron_position: Vector2, target_position: Vector2):
@@ -77,6 +91,14 @@ func get_random_spawn_position(player_position: Vector2, min_distance: float) ->
 
 	return spawn_position
 
+# Spawn powerup at the specified position
+func spawn_powerup_at_position(position: Vector2):
+	print("Powerup spawned at: ", position)
+	var powerup_scene = preload("res://scenes/powerups/powerup.tscn")
+	var powerup = powerup_scene.instantiate()
+	powerup.position = position
+	add_child(powerup)
+	
 
 # Spawn an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
