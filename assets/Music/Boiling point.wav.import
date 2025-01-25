@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bwxhc4pw74ixa"
+uid="uid://vbf1lqlcqwfm"
 path="res://.godot/imported/Boiling point.wav-4a9a437b21314966a56dd1e5efbc702a.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
+edit/loop_mode=2
+edit/loop_begin=1751834
+edit/loop_end=13430731
 compress/mode=0
