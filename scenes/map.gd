@@ -16,6 +16,7 @@ func _ready():
 func new_game():
 	$Player.position = $StartPosition.position
 	$Player.show()
+	$Player.start()
 	start_spawning()
 
 func start_spawning():

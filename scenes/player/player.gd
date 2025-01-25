@@ -6,9 +6,14 @@ extends CharacterBody2D
 @export var accel = 5000
 @export var friction = 500
 var input = Vector2.ZERO
+var is_ready = false
 
 func _ready():
 	print("Start")
+	
+
+func start():
+	is_ready = true
 
 	
 func get_input():
@@ -24,6 +29,8 @@ func get_input():
 
 
 func _physics_process(delta):
+	if not is_ready:
+		return
 	input = get_input()
 	#rotation = atan2(velocity.y, velocity.x)
 	
