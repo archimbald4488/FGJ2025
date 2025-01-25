@@ -12,6 +12,7 @@ var damage: int = 1
 @export var chase_target: CharacterBody2D
 
 func _init(max_health:int, max_speed:int, damage:int):
+	add_to_group("Enemy")
 	self.health = Health.new()
 	self.health.max_health = max_health
 	self.movement = Movement.new()
