@@ -5,6 +5,7 @@ class_name EnemyBase
 var health: Health
 var movement: Movement
 
+@onready var hud = $Player/Camera2D/HUD
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @export var chase_target: CharacterBody2D
 @export var max_health: int
@@ -52,7 +53,7 @@ func _health_changed(new_health: int):
 
 func _dead():
 	print("Dead")
-	Camera2D/HUD.update_score(1)
+	hud.update_score(1)
 	queue_free()
 
 func take_damage(amount: int):
