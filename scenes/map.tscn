@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://hmga23hvrsvb"]
+[gd_scene load_steps=9 format=3 uid="uid://hmga23hvrsvb"]
 
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 [ext_resource type="PackedScene" uid="uid://dq1xnliwhi688" path="res://scenes/player/player.tscn" id="2_2hccj"]
-[ext_resource type="PackedScene" uid="uid://d4lg643btasi1" path="res://scenes/enemies/lisko_enemy.tscn" id="3_3orv7"]
-[ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/Cauldron.tscn" id="4_h5mq3"]
+[ext_resource type="PackedScene" uid="uid://d4lg643btasi1" path="res://scenes/enemies/lisko_enemy.tscn" id="3_uiaia"]
+[ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="4_8lubt"]
+[ext_resource type="PackedScene" path="res://scenes/Cauldron.tscn" id="4_h5mq3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
 texture = ExtResource("1_lkicu")
@@ -436,6 +437,11 @@ texture = ExtResource("1_lkicu")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0sjg1")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3dywq"]
+vertices = PackedVector2Array(292.844, -129.297, 284.141, 87.3516, 130.141, 283, -105.078, 283, -309.031, 93.6016, -310.961, -140.828, -123.898, -325, 114.594, -325)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-321, -145, -128, -335, 119, -335, 303, -133, 294, 91, 135, 293, -109, 293, -319, 98)])
+
 [node name="Map" type="Node2D"]
 position = Vector2(1, 1)
 
@@ -452,9 +458,14 @@ scale = Vector2(0.2, 0.2)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-[node name="LiskoEnemy" parent="." instance=ExtResource("3_3orv7")]
-position = Vector2(155, 112)
+[node name="LiskoEnemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("3_uiaia")]
+position = Vector2(-141, -72)
 scale = Vector2(0.1, 0.1)
+script = ExtResource("4_8lubt")
+target_to_chase = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_3dywq")
 
 [node name="Cauldron" parent="." instance=ExtResource("4_h5mq3")]
 position = Vector2(-1, -2)
