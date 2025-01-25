@@ -450,8 +450,10 @@ scale = Vector2(0.2, 0.2)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-
 [node name="LiskoEnemy" parent="." instance=ExtResource("3_3orv7")]
 position = Vector2(155, 112)
 scale = Vector2(0.1, 0.1)
 
+[node name="LiskoEnemy2" parent="." instance=ExtResource("3_3orv7")]
+position = Vector2(-119, 59)
+scale = Vector2(0.1, 0.1)

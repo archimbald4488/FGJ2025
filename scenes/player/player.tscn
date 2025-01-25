@@ -50,6 +50,8 @@ position = Vector2(614, 294)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_r6wso")
+health = 5
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_r0s77")
