@@ -8,12 +8,27 @@ extends CharacterBody2D
 var input = Vector2.ZERO
 var is_ready = false
 
+const START_JINGLE_DURATION = 1.8
+const END_JINGLE_DURATION = 6.9  # nice
+
 func _ready():
 	print("Start")
 	
 
 func start():
+	_handle_music_on_start()
 	is_ready = true
+
+
+func _handle_music_on_start():
+	$MenuMusic.stop()
+	$GameStartJingle.play()
+	var timer = Timer.new()
+	timer.wait_time = START_JINGLE_DURATION
+	timer.one_shot = true
+	timer.connect("timeout", Callable($GameMusic, "play"))
+	add_child(timer)
+	timer.start()
 
 	
 func get_input():
@@ -27,7 +42,22 @@ func get_input():
 		$Sprite2D.play("Attack animation")
 		print("attack")
 	return input.normalized()
-	
+
+
+func game_over():
+	is_ready = false
+	_handle_music_on_stop()
+
+
+func _handle_music_on_stop():
+	$GameMusic.stop()
+	$GameEndJingle.play()
+	var timer = Timer.new()
+	timer.wait_time = END_JINGLE_DURATION
+	timer.one_shot = true
+	timer.connect("timeout", Callable($MenuMusic, "play"))
+	add_child(timer)
+	timer.start()
 
 
 func _physics_process(delta):

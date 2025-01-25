@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vbf1lqlcqwfm"
+path="res://.godot/imported/Boiling point.wav-4a9a437b21314966a56dd1e5efbc702a.sample"
+
+[deps]
+
+source_file="res://assets/Music/Boiling point.wav"
+dest_files=["res://.godot/imported/Boiling point.wav-4a9a437b21314966a56dd1e5efbc702a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=1751834
+edit/loop_end=13430731
+compress/mode=0
