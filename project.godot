@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="fgj2025"
+run/main_scene="res://Cauldron.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[rendering]
+[dotnet]
 
-renderer/rendering_method="gl_compatibility"
+project/assembly_name="fgj2025"
