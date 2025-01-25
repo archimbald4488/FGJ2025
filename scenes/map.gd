@@ -19,6 +19,7 @@ func _ready():
 func new_game():
 	$Player.position = $StartPosition.position
 	$Player.show()
+	$Player.health = 10
 	$Player.start()
 	start_spawning()
 
