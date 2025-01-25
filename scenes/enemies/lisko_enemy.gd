@@ -3,7 +3,7 @@ var movement_speed: float = 180.0
 var movement_target_position: Vector2 = Vector2(60.0,180.0)
 
 # Health
-@export var health: int
+@export var health: int = 2
 @export var damage: int
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @export var target_to_chase: CharacterBody2D
