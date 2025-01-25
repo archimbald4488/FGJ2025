@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkp07ucalvdqe"]
+
+[ext_resource type="Script" path="res://scenes/powerups/powerup.gd" id="1_ffwkm"]
+[ext_resource type="Texture2D" uid="uid://ccoi2he0woa3i" path="res://assets/Booli/Cauldron.png" id="1_pmsn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1048b"]
+size = Vector2(37, 34.5)
+
+[node name="powerup" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_ffwkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_1048b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_pmsn8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
