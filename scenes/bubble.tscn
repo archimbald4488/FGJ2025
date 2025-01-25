@@ -1,24 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://hvq1ttya5dg5"]
+[gd_scene load_steps=9 format=3 uid="uid://hvq1ttya5dg5"]
 
-[ext_resource type="Texture2D" uid="uid://2vwa0qtcda13" path="res://assets/bubble3.png" id="1_p288i"]
-[ext_resource type="Texture2D" uid="uid://4iqldemxauiw" path="res://assets/bubble2.png" id="2_6ljeh"]
-[ext_resource type="Texture2D" uid="uid://s82i5rwrq2cf" path="res://assets/bubble1.png" id="3_71i3b"]
+[ext_resource type="Texture2D" uid="uid://65hyw4aescil" path="res://assets/new-bubble/bubble.png" id="1_0x4xo"]
+[ext_resource type="Texture2D" uid="uid://dj2112bppijho" path="res://assets/new-bubble/bubble2.png" id="2_a8148"]
+[ext_resource type="Texture2D" uid="uid://b4o61wiq48koe" path="res://assets/new-bubble/bubble3.png" id="3_ejqa4"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="4_4qj3w"]
+[ext_resource type="Texture2D" uid="uid://d3j6tgx3v0sq1" path="res://assets/new-bubble/bubble4.png" id="4_x47jt"]
+[ext_resource type="Texture2D" uid="uid://dp3c522txuju6" path="res://assets/new-bubble/bubble5.png" id="5_purx2"]
+[ext_resource type="Texture2D" uid="uid://cbk50ofhsb3fp" path="res://assets/new-bubble/bubble6.png" id="6_217hf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l8juc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_p288i")
+"texture": ExtResource("1_0x4xo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_6ljeh")
+"texture": ExtResource("2_a8148")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_p288i")
+"texture": ExtResource("3_ejqa4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_71i3b")
+"texture": ExtResource("1_0x4xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0x4xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a8148")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ejqa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0x4xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a8148")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ejqa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a8148")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ejqa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0x4xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x47jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_purx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_217hf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_purx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x47jt")
 }],
 "loop": true,
 "name": &"bubbles",
@@ -28,5 +73,5 @@ animations = [{
 [node name="Bubble" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_l8juc")
 animation = &"bubbles"
-frame_progress = 0.774952
+frame_progress = 0.562089
 script = ExtResource("4_4qj3w")
