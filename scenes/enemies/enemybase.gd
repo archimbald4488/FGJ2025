@@ -11,17 +11,25 @@ var movement: Movement
 @export var max_speed: int
 @export var damage: int
 
-
-func _init():
-	add_to_group("Enemy")
+func _init_health(max_health:int):
 	self.health = Health.from_args(max_health)
 	self.health.health_changed.connect(_health_changed)
 	self.health.dead.connect(_dead)
+
+func _init_movement(max_speed:int):
 	self.movement = Movement.from_args(max_speed, 90, 0.1)
+	
+
+func _init():
+	add_to_group("Enemy")
+
 
 func _ready() -> void:
+	self._init_health(max_health)
+	self._init_movement(max_speed)
 	set_physics_process(false)
 	call_deferred("wait_for_physics")
+
 
 func wait_for_physics() -> void:
 	await get_tree().physics_frame
@@ -32,10 +40,10 @@ func _physics_process(delta:float) -> void:
 		return
 		
 	navigation.target_position = chase_target.global_position
-	var next_position = global_position.direction_to(navigation.get_next_path_position())
+	#var next_position = global_position.direction_to(navigation.get_next_path_position())
 	#var new_velocity = movement.update_movement(next_position, delta)
 	velocity = global_position.direction_to(navigation.get_next_path_position()) * max_speed
-	#velocity = global_position.direction_to(new_position)
+	#velocity = new_velocity
 	rotation = velocity.angle()
 	move_and_slide()
 
