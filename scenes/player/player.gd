@@ -9,6 +9,7 @@ signal player_died
 @export var friction = 500
 var input = Vector2.ZERO
 var is_ready = false
+var angle: float
 
 const START_JINGLE_DURATION = 1.8
 const END_JINGLE_DURATION = 6.9  # nice
@@ -39,10 +40,12 @@ func get_input():
 	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
 	#Look at mouse direction
 	look_at(get_global_mouse_position())
+	#angle = get_angle_to(get_global_mouse_position())
 	if Input.is_action_just_pressed("attack"):
 		$AttackNew.play("AttackNew")
 		$Sprite2D.play("Attack animation")
 		print("attack")
+		#fire()
 	return input.normalized()
 
 
@@ -101,3 +104,9 @@ func _on_attack_body_entered(body: Node2D) -> void:
 		if body.health <= 0:
 			print("enemy died")
 			body.queue_free()
+
+#func fire():
+	#var projectile_scene = preload("res://scenes/projectile/projectile.tscn")
+	#var b = projectile_scene.instantiate()
+	#add_child(b)
+	#b.transform = $Muzzle.global_transform

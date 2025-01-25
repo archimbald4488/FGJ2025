@@ -93,3 +93,10 @@ frame_progress = 0.585881
 offset = Vector2(100, -60)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

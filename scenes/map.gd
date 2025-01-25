@@ -4,6 +4,8 @@ extends Node2D
 @onready var player = $Player  # Reference to the player node
 @onready var camera = $Player/Camera2D  # Reference to the camera node
 @onready var hud = $Player/Camera2D/HUD
+@onready var enemy = $LiskoEnemy
+var enemy_hp: int = 2
 
 @export var spawn_interval: float = 3.0  # Time in seconds between spawns
 @export var min_spawn_distance: float = 100.0  # Minimum distance from the player for spawn
@@ -27,6 +29,7 @@ func new_game():
 	$Player/Camera2D/HUD.update_damage(1)
 	$Player.start()
 	$Cauldron.start_spawning()
+	$Difficulty.start()
 
 
 func start_spawning():
@@ -36,6 +39,8 @@ func start_spawning():
 	timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
 	add_child(timer)
 	timer.start()
+	
+	
 
 # Called each time the timer triggers
 func _on_spawn_timer_timeout():
@@ -114,3 +119,8 @@ func spawn_enemy_at_position(position: Vector2):
 	enemy.target_to_chase = $Player
 	enemy.scale = Vector2(0.1, 0.1)
 	add_child(enemy)
+
+
+func _on_difficulty_timeout() -> void:
+	print("Difficulty increased!")
+	

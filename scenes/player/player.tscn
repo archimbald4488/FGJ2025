@@ -218,4 +218,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8xmyx")
 }
 
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(330, -36)
+
 [connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_body_entered"]
