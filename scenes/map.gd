@@ -10,7 +10,12 @@ extends Node2D
 @export var enemy_scene_path: String = "res://scenes/enemies/lisko_enemy.tscn"  # Path to the enemy scene
 
 func _ready():
-	# Start the spawning process
+	#new_game()
+	$Player.hide()
+
+func new_game():
+	$Player.position = $StartPosition.position
+	$Player.show()
 	start_spawning()
 
 func start_spawning():
