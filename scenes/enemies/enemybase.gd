@@ -2,26 +2,24 @@
 extends CharacterBody2D
 class_name EnemyBase
 
-const Health = preload("res://logic/health.gd")
-const Movement = preload("res://logic/movement.gd")
-
 var health: Health
 var movement: Movement
-var damage: int = 1
+
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @export var chase_target: CharacterBody2D
+@export var max_health: int = 100
+@export var max_speed: int = 180
+@export var damage: int = 1
 
-func _init(max_health:int, max_speed:int, damage:int):
+
+func _init():
 	add_to_group("Enemy")
-	self.health = Health.new()
-	self.health.max_health = max_health
-	self.movement = Movement.new()
-	self.movement.max_speed = max_speed
-	self.damage = damage
+	self.health = Health.from_args(max_health)
+	self.health.health_changed.connect(_health_changed)
+	self.health.dead.connect(_dead)
+	self.movement = Movement.from_args(max_speed, 30, 0.1)
 
 func _ready() -> void:
-	health.health_changed(_health_changed)
-	health.dead(_dead)
 	set_physics_process(false)
 	call_deferred("wait_for_physics")
 
@@ -30,10 +28,10 @@ func wait_for_physics() -> void:
 	set_physics_process(true)
 
 func _physics_process(delta:float) -> void:
-	if navigation.is_navigation_finished() and chase_target.global_position == navigation.target_position:
+	if navigation.is_navigation_finished() and chase_target.position == navigation.target_position:
 		return
-	navigation.target_position = chase_target.global_position
-	var next_position = global_position.direction_to(navigation.get_next_path_position())
+	navigation.target_position = chase_target.position
+	var next_position = position.direction_to(navigation.get_next_path_position())
 	velocity = movement.update_movement(next_position, delta)
 	rotation = velocity.angle()
 	move_and_slide()
