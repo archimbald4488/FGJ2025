@@ -16,7 +16,6 @@ position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_1048b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_pmsn8")
 
 [node name="PowDespawn" type="Timer" parent="."]
