@@ -3,4 +3,4 @@
 /android/
 
 # Audio files
-.wav
+*.wav
