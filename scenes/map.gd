@@ -17,11 +17,17 @@ func _ready():
 	hud.connect("start_game", Callable(self, "_on_start_game"))
 
 func new_game():
+	get_tree().call_group("Enemy", "queue_free")
 	$Player.position = $StartPosition.position
+	$Cauldron.camera = $Player/Camera2D
+	$Cauldron.player = $Player
 	$Player.show()
 	$Player.health = 10
+	$Player/Camera2D/HUD.update_health(10)
+	$Player/Camera2D/HUD.update_damage(1)
+	$Player/Camera2D/HUD.update_score(0)
 	$Player.start()
-	start_spawning()
+	$Cauldron.start_spawning()
 
 
 func start_spawning():

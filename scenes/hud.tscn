@@ -47,6 +47,8 @@ offset_top = 36.0
 offset_right = 50.0
 offset_bottom = 80.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Score: 0"
 
 [node name="StartMenu" type="Control" parent="."]
@@ -116,6 +118,7 @@ offset_right = 306.0
 offset_bottom = -45.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
+max_value = 10.0
 fill_mode = 1
 
 [node name="DamageText" type="Label" parent="InGameHUD"]
