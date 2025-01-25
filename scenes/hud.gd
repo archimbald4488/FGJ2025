@@ -40,7 +40,7 @@ func update_health(value: float) -> void:
 
 # Update damage display
 func update_damage(value: int) -> void:
-	damage_text.text = str(value)
+	damage_text.text = "Your damage: " + str(value)
 
 # Show game over message
 func show_game_over() -> void:

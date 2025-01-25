@@ -85,6 +85,7 @@ func _physics_process(delta):
 		if collided_object and collided_object.is_in_group("Enemy"):
 			print("Collided with an enemy!")
 			health -= 1
+			$Camera2D/HUD.update_health(health)
 			if health <= 0:
 				print("player died.")
 				game_over()
