@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 [ext_resource type="PackedScene" uid="uid://dq1xnliwhi688" path="res://scenes/player/player.tscn" id="2_2hccj"]
 [ext_resource type="PackedScene" uid="uid://d4lg643btasi1" path="res://scenes/enemies/lisko_enemy.tscn" id="3_uiaia"]
-[ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/Cauldron.tscn" id="5_22xbv"]
+[ext_resource type="PackedScene" path="res://scenes/Cauldron.tscn" id="5_22xbv"]
 [ext_resource type="Script" path="res://scenes/cauldron.gd" id="6_2idbb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
