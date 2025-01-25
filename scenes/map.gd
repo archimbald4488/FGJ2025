@@ -102,8 +102,8 @@ func spawn_powerup_at_position(position: Vector2):
 	
 
 # Spawn an enemy at the specified position
-func spawn_enemy_at_position(position: Vector2):
-	print("Enemy spawned at: ", position)
+func spawn_enemy_at_position(spawn_position: Vector2):
+	print("Enemy spawned at: ", spawn_position)
 	var enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
@@ -114,4 +114,8 @@ func spawn_enemy_at_position(position: Vector2):
 
 	enemy.target_to_chase = $Player
 	enemy.scale = Vector2(0.1, 0.1)
+	
+	enemy.chase_target= $Player
+	enemy.scale = Vector2(0.1, 0.1)
+	
 	add_child(enemy)
