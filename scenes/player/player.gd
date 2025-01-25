@@ -6,9 +6,14 @@ extends CharacterBody2D
 @export var accel = 5000
 @export var friction = 500
 var input = Vector2.ZERO
+var is_ready = false
 
 func _ready():
 	print("Start")
+	
+
+func start():
+	is_ready = true
 
 	
 func get_input():
@@ -18,14 +23,16 @@ func get_input():
 	#Look at mouse direction
 	look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("attack"):
-		#Play attack animation
-		$Attack.play("attack")
+		$AttackNew.play("AttackNew")
+		$Sprite2D.play("Attack animation")
 		print("attack")
 	return input.normalized()
 	
 
 
 func _physics_process(delta):
+	if not is_ready:
+		return
 	input = get_input()
 	#Movement
 	if input == Vector2.ZERO:
