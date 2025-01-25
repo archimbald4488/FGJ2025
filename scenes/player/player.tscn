@@ -1,14 +1,14 @@
 [gd_scene load_steps=27 format=3 uid="uid://dq1xnliwhi688"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_r6wso"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/attack-charge.png" id="3_kj428"]
+[ext_resource type="Texture2D" uid="uid://bufwf6hdfoau4" path="res://assets/player-sprite/attack-charge.png" id="3_kj428"]
 [ext_resource type="Texture2D" uid="uid://dw08k41kc32b6" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/BASE CHARACTER/_ARCHIVE/PNG/NO FX/spr_basecharacter_death_strip13.png" id="3_nxb7p"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/attack-hit.png" id="4_dr7w4"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/attack-charge-after.png" id="4_xia6d"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/idle-stance.png" id="4_yetc0"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/idle-lean-1.png" id="5_l8i0h"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/attack-hit-after.png" id="6_phl84"]
-[ext_resource type="Texture2D" path="res://assets/player-sprite/idle-lean-2.png" id="6_raa3t"]
+[ext_resource type="Texture2D" uid="uid://dps5k8dddb56j" path="res://assets/player-sprite/attack-hit.png" id="4_dr7w4"]
+[ext_resource type="Texture2D" uid="uid://ik1b66ptkoib" path="res://assets/player-sprite/attack-charge-after.png" id="4_xia6d"]
+[ext_resource type="Texture2D" uid="uid://dwrrnrkatmijo" path="res://assets/player-sprite/idle-stance.png" id="4_yetc0"]
+[ext_resource type="Texture2D" uid="uid://d1eq3hic2ct6x" path="res://assets/player-sprite/idle-lean-1.png" id="5_l8i0h"]
+[ext_resource type="Texture2D" uid="uid://dd63sd15utens" path="res://assets/player-sprite/attack-hit-after.png" id="6_phl84"]
+[ext_resource type="Texture2D" uid="uid://cdhrvq4y45b4w" path="res://assets/player-sprite/idle-lean-2.png" id="6_raa3t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vr4k"]
 atlas = ExtResource("3_nxb7p")
