@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://hmga23hvrsvb"]
+[gd_scene load_steps=8 format=3 uid="uid://hmga23hvrsvb"]
 
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 [ext_resource type="PackedScene" uid="uid://dq1xnliwhi688" path="res://scenes/player/player.tscn" id="2_2hccj"]
 [ext_resource type="PackedScene" uid="uid://d4lg643btasi1" path="res://scenes/enemies/lisko_enemy.tscn" id="3_uiaia"]
-[ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="4_8lubt"]
 [ext_resource type="PackedScene" path="res://scenes/Cauldron.tscn" id="4_h5mq3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
@@ -454,6 +453,8 @@ layer_0/tile_data = PackedInt32Array(-1, 983040, 4, -65536, 983040, 4, 0, 983040
 [node name="Player" parent="." instance=ExtResource("2_2hccj")]
 position = Vector2(-25, 136)
 scale = Vector2(0.2, 0.2)
+health = 0
+damage = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
@@ -461,7 +462,8 @@ position_smoothing_enabled = true
 [node name="LiskoEnemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("3_uiaia")]
 position = Vector2(-141, -72)
 scale = Vector2(0.1, 0.1)
-script = ExtResource("4_8lubt")
+health = 0
+damage = 0
 target_to_chase = NodePath("../Player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
