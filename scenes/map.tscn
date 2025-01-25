@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://hmga23hvrsvb"]
+[gd_scene load_steps=14 format=3 uid="uid://hmga23hvrsvb"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_1tk0n"]
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cp84t5412c2l7" path="res://scenes/hud.tscn" id="4_wihdx"]
 [ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/Cauldron.tscn" id="5_22xbv"]
 [ext_resource type="Script" path="res://scenes/cauldron.gd" id="6_2idbb"]
+[ext_resource type="AudioStream" uid="uid://351cv7k5vs5f" path="res://assets/Music/Something Brewing.wav" id="6_wawty"]
+[ext_resource type="AudioStream" uid="uid://vbf1lqlcqwfm" path="res://assets/Music/Boiling point.wav" id="7_0uqrk"]
+[ext_resource type="AudioStream" uid="uid://bqmaohmvxs6fn" path="res://assets/Music/FGJ3.wav" id="7_cmvh3"]
+[ext_resource type="AudioStream" uid="uid://clxr2ovxshfg3" path="res://assets/Music/FGJ2.wav" id="8_bs0ea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
 texture = ExtResource("1_lkicu")
@@ -457,17 +461,37 @@ layer_2/name = "Layer2"
 layer_2/tile_data = PackedInt32Array(589787, 786432, 8, 655323, 786432, 9, 786395, 786432, 11, 589788, 851968, 8, 655324, 851968, 9, 720860, 851968, 10, 786396, 851968, 11, 589789, 917504, 8, 655325, 917504, 9, 786397, 917504, 11, -327720, 2031616, 2, -262184, 2031616, 3, -327719, 2097152, 2, -262183, 2097152, 3, -327718, 2162688, 2, -262182, 2162688, 3, -327649, 2162688, 12, -1114080, 2162688, 12, -196646, 2162688, 12, -65505, 917504, 3, -65504, 1048576, 2, -65503, 1179648, 3, 31, 917504, 4, 33, 1179648, 4, 65569, 1179648, 4, 32, 1048576, 3, 65568, 1048576, 3, 131104, 983040, 4, 131105, 1048576, 4, 131106, 1048576, 4, 131107, 1048576, 4, 131108, 1048576, 4, 131109, 1048576, 4, 131110, 1048576, 4, 131111, 1048576, 4, 131112, 1048576, 4, 131113, 1048576, 4, 131114, 1048576, 4, 131115, 1048576, 4, 131116, 1048576, 4, 131117, 1048576, 4, 131118, 1048576, 4, 131119, 1048576, 4, 131120, 1048576, 4, 131121, 1048576, 4, 131122, 1048576, 4, 131123, 1048576, 4, 131124, 1048576, 4, 131125, 1048576, 4, 196661, 1048576, 6, 196662, 1048576, 6, 131126, 1048576, 4, 65567, 917504, 4, 131103, 917504, 4, 65570, 1048576, 2, 65571, 1048576, 2, 65572, 1048576, 2, 65573, 1048576, 2, 65574, 1048576, 2, 65575, 1048576, 2, 65576, 1048576, 2, 65577, 1048576, 2, 65578, 1048576, 2, 65579, 1048576, 2, 65580, 1048576, 2, 65581, 1048576, 2, 65582, 1048576, 2, 65583, 1048576, 2, 65584, 1048576, 2, 65585, 1048576, 2, 65586, 1048576, 2, 65587, 1048576, 2, 65588, 1048576, 2, 196640, 1048576, 6, 196641, 1048576, 6, 196642, 1048576, 6, 196643, 1048576, 6, 196644, 1048576, 6, 196645, 1048576, 6, 196646, 1048576, 6, 196647, 1048576, 6, 196648, 1048576, 6, 196649, 1048576, 6, 196650, 1048576, 6, 196651, 1048576, 6, 196652, 1048576, 6, 196653, 1048576, 6, 196654, 1048576, 6, 196655, 1048576, 6, 196656, 1048576, 6, 196657, 1048576, 6, 196658, 1048576, 6, 196659, 1048576, 6, 196660, 1048576, 6, 65589, 1048576, 2, 65590, 1048576, 2, 262174, 720896, 17, 327710, 720896, 18, 393246, 720896, 19, 458782, 720896, 20, 262175, 786432, 17, 327711, 786432, 18, 393247, 786432, 19, 458783, 786432, 20)
 
 [node name="Player" parent="." instance=ExtResource("2_2hccj")]
-position = Vector2(-25, 136)
+position = Vector2(-1, 34)
 scale = Vector2(0.2, 0.2)
-health = 0
+health = 10
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
 [node name="HUD" parent="Player/Camera2D" instance=ExtResource("4_wihdx")]
 
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(125, -680)
+scale = Vector2(5, 5)
+stream = ExtResource("7_0uqrk")
+max_distance = 20000.0
+attenuation = 0.00158642
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("6_wawty")
+autoplay = true
+
+[node name="GameStartJingle" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("7_cmvh3")
+
+[node name="GameEndJingle" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("8_bs0ea")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_3dywq")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
 visible = false
@@ -479,4 +503,5 @@ script = ExtResource("6_2idbb")
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(-170, 0)
 
+[connection signal="player_died" from="Player" to="Player/Camera2D/HUD" method="show_game_over"]
 [connection signal="start_game" from="Player/Camera2D/HUD" to="." method="new_game"]

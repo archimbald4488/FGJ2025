@@ -2,49 +2,71 @@ extends CanvasLayer
 
 signal start_game
 
+@onready var start_menu = $StartMenu
+@onready var in_game_hud = $InGameHUD
+@onready var health_bar = $InGameHUD/HealthBar
+@onready var damage_text = $InGameHUD/DamageText
+@onready var pause_button = $InGameHUD/PauseButton
+@onready var timer = $Timer
 
-# Called when the node enters the scene tree for the first time.
+var score: int = 0  # Player's score
+
+# Initialize the HUD
 func _ready() -> void:
-	pass # Replace with function body.
+	# Show the main menu by default
+	start_menu.visible = true
+	in_game_hud.visible = false
+	$ScoreLabel.text = "Score: 0"  # Initialize score display
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-
-
-func small_message(text, time):
+# Small temporary message
+func small_message(text: String, time: float) -> void:
 	$SmallMessage.text = text
 	$SmallMessage.show()
-	if time != 0:
-		$Timer.wait_time = time
-		$Timer.start()
-	
-func big_message(text, time):
+	if time > 0:
+		timer.wait_time = time
+		timer.start()
+
+# Big temporary message
+func big_message(text: String, time: float) -> void:
 	$BigMessage.text = text
 	$BigMessage.show()
-	if time != 0:
-		$Timer.wait_time = time
-		$Timer.start()
+	if time > 0:
+		timer.wait_time = time
+		timer.start()
 
-func hp_text(text):
-	$Health.text = text
-	$Health.show()
-	
-func dmg_text(text):
-	$Damage.text = text
-	$Damage.show()
-	
-func show_game_over():
+# Update health display
+func update_health(value: float) -> void:
+	health_bar.value = value
+
+# Update damage display
+func update_damage(value: int) -> void:
+	damage_text.text = str(value)
+
+# Show game over message
+func show_game_over() -> void:
 	big_message("Game Over", 2)
-	await $Timer.timeout
-	big_message("Brew the brew", 0)
-	$StartButton.show()
+	await timer.timeout
+	#big_message("Brew the brew", 0)
+	start_menu.visible = true
+	in_game_hud.visible = false
 
+# Start button pressed
 func _on_start_button_pressed() -> void:
-	$StartButton.hide()
-	start_game.emit()
+	start_menu.visible = false
+	in_game_hud.visible = true
+	emit_signal("start_game")
 
-func _on_timer_timeout() -> void:
+# Pause button pressed
+func _on_pause_button_pressed() -> void:
+	# Toggle the pause state
+	print("Pause button pressed")
+	if get_tree().paused:
+		get_tree().paused = false  # Unpause the game
+		pause_button.text = "Pause"  # Change button text back to "Pause"
+	else:
+		get_tree().paused = true  # Pause the game
+		pause_button.text = "Resume"  # Change button text to "Resume"
+		
+func _on_timer_timeout():
 	$BigMessage.hide()
 	$SmallMessage.hide()
