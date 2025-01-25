@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b5hsebu8w1nbh" path="res://assets/Sunnyside assets/TILESET/SunnysideWorld_Tileset_V0.1.png" id="1_lkicu"]
 [ext_resource type="PackedScene" uid="uid://dq1xnliwhi688" path="res://scenes/player/player.tscn" id="2_2hccj"]
 [ext_resource type="PackedScene" uid="uid://d4lg643btasi1" path="res://scenes/enemies/lisko_enemy.tscn" id="3_uiaia"]
-[ext_resource type="PackedScene" path="res://scenes/Cauldron.tscn" id="4_h5mq3"]
+[ext_resource type="PackedScene" uid="uid://ni0bal3rv040" path="res://scenes/Cauldron.tscn" id="4_h5mq3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sjg1"]
 texture = ExtResource("1_lkicu")
@@ -460,8 +460,8 @@ position_smoothing_enabled = true
 
 [node name="LiskoEnemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("3_uiaia")]
 position = Vector2(-141, -72)
-health = 0
 scale = Vector2(0.1, 0.1)
+health = 0
 damage = 0
 target_to_chase = NodePath("../Player")
 
