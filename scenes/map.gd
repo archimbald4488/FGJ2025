@@ -18,9 +18,11 @@ func _ready():
 
 func new_game():
 	$Player.position = $StartPosition.position
+	$Cauldron.camera = $Player/Camera2D
+	$Cauldron.player = $Player
 	$Player.show()
 	$Player.start()
-	start_spawning()
+	$Cauldron.start_spawning()
 
 
 func start_spawning():
