@@ -100,4 +100,5 @@ func _on_attack_body_entered(body: Node2D) -> void:
 		body.health -= damage
 		if body.health <= 0:
 			print("enemy died")
+			$Camera2D/HUD.update_score(1)
 			body.queue_free()

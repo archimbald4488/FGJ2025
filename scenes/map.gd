@@ -25,6 +25,7 @@ func new_game():
 	$Player.health = 10
 	$Player/Camera2D/HUD.update_health(10)
 	$Player/Camera2D/HUD.update_damage(1)
+	$Player/Camera2D/HUD.update_score(0)
 	$Player.start()
 	$Cauldron.start_spawning()
 
