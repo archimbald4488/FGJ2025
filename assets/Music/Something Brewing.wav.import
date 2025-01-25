@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cniwolr628jec"
+path="res://.godot/imported/Something Brewing.wav-b55b19888334e65ac4463f079f50afe0.sample"
+
+[deps]
+
+source_file="res://assets/Music/Something Brewing.wav"
+dest_files=["res://.godot/imported/Something Brewing.wav-b55b19888334e65ac4463f079f50afe0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
