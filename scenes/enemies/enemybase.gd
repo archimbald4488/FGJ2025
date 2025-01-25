@@ -1,0 +1,56 @@
+# enemy-base.gddd
+extends CharacterBody2D
+class_name EnemyBase
+
+const Health = preload("res://logic/health.gd")
+const Movement = preload("res://logic/movement.gd")
+
+var health: Health
+var movement: Movement
+var damage: int = 1
+@onready var navigation: NavigationAgent2D = $NavigationAgent2D
+@export var chase_target: CharacterBody2D
+
+func _init(max_health:int, max_speed:int, damage:int):
+	self.health = Health.new()
+	self.health.max_health = max_health
+	self.movement = Movement.new()
+	self.movement.max_speed = max_speed
+	self.damage = damage
+
+func _ready() -> void:
+	health.health_changed(_health_changed)
+	health.dead(_dead)
+	set_physics_process(false)
+	call_deferred("wait_for_physics")
+
+func wait_for_physics() -> void:
+	await get_tree().physics_frame
+	set_physics_process(true)
+
+func _physics_process(delta:float) -> void:
+	if navigation.is_navigation_finished() and chase_target.global_position == navigation.target_position:
+		return
+	navigation.target_position = chase_target.global_position
+	var next_position = global_position.direction_to(navigation.get_next_path_position())
+	velocity = movement.update_movement(next_position, delta)
+	rotation = velocity.angle()
+	move_and_slide()
+
+func _health_changed(new_health: int):
+	print("Health %s." % new_health)
+
+func _dead():
+	print("Dead")
+	queue_free()
+
+func take_damage(amount: int):
+	health.take_damage(amount)
+
+func heal(amount: int):
+	health.heal(amount)
+
+
+func deal_damage(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(self.damage)		
