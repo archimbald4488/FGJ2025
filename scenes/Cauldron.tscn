@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drnvdf4d3bahy"]
+[gd_scene load_steps=9 format=3 uid="uid://ni0bal3rv040"]
 
 [ext_resource type="Texture2D" uid="uid://cngrp6v3qixdy" path="res://assets/Booli/Cauldron0.png" id="1_kqjx5"]
 [ext_resource type="Texture2D" uid="uid://7wecr3a3uu75" path="res://assets/Booli/Cauldron1.png" id="2_4dqvn"]
@@ -88,7 +88,8 @@ trail_sections = 14
 position = Vector2(0, -0.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_f4tfd")
-frame_progress = 0.256471
+autoplay = "default"
+frame_progress = 0.169864
 
 [node name="RuikkuParticles" type="GPUParticles2D" parent="StaticBody2D"]
 modulate = Color(0.6, 0.145098, 0.454902, 0.815686)
