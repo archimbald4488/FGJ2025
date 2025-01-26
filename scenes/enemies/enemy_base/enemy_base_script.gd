@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 var health: Health
 var movement: Movement
+var navigation: NavigationAgent2D
 
-@onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var on_hit_sound_effect: AudioStreamPlayer2D = $EnemyHit
 @export var hud: CanvasLayer
 @export var chase_target: CharacterBody2D
@@ -19,13 +19,11 @@ func _init_health(max_health:int):
 
 func _init_movement(max_speed:int):
 	self.movement = Movement.from_args(max_speed, 90, 0.1)
-	
-
-func _init():
-	add_to_group("Enemy")
+	navigation = $NavigationAgent2D
 
 
 func _ready() -> void:
+	add_to_group("Enemy")
 	self._init_health(max_health)
 	self._init_movement(max_speed)
 	set_physics_process(false)
@@ -43,7 +41,7 @@ func _physics_process(delta:float) -> void:
 	navigation.target_position = chase_target.global_position
 	#var next_position = global_position.direction_to(navigation.get_next_path_position())
 	#var new_velocity = movement.update_movement(next_position, delta)
-	velocity = global_position.direction_to(navigation.get_next_path_position()) * max_speed
+	velocity = global_position.direction_to(navigation.get_next_path_position()) * movement.max_speed
 	#velocity = new_velocity
 	rotation = velocity.angle()
 	move_and_slide()
