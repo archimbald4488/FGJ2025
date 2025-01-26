@@ -16,17 +16,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_c7366")
 
-[node name="Panel" type="Panel" parent="EnemyPopup"]
-clip_contents = true
-custom_minimum_size = Vector2(100, 50)
+[node name="PanelContainer" type="PanelContainer" parent="EnemyPopup"]
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 100.0
+offset_left = -100.0
+offset_top = 100.0
+offset_right = -60.0
+offset_bottom = 169.0
 
-[node name="Label" type="Label" parent="EnemyPopup/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Label" type="Label" parent="EnemyPopup/PanelContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
