@@ -31,7 +31,7 @@ var funny_arr_messages: Array = [
 ]
 
 # Nodes
-@onready var label: Label = $Panel/Label
+@onready var label: Label = $PanelContainer/Label
 
 func _ready():
 	# Hide popup initially
