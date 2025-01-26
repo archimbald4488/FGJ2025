@@ -81,7 +81,7 @@ script = ExtResource("2_rvi1j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_5msiq")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="3"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-601, 301)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_h62ba")
