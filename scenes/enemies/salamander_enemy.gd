@@ -8,13 +8,16 @@ func _ready() -> void:
 	super._ready()
 	# Initialize the fireball timer
 	fireball_timer = Timer.new()
-	fireball_timer.wait_time = fireball_cooldown
-	fireball_timer.one_shot = false
+	fireball_timer.one_shot = true
 	fireball_timer.connect("timeout", self._spit_fireball)
 	add_child(fireball_timer)
-	fireball_timer.start()
+	fireball_timer.start(_get_next_spit_time())
+
+func _get_next_spit_time() -> float:
+	return fireball_cooldown + randf()
 
 func _spit_fireball() -> void:
+	fireball_timer.start(_get_next_spit_time())
 	if not is_instance_valid(chase_target):
 		return  # Ensure the target exists
 	var fireball_scene = preload("res://scenes/enemies/fireball.tscn")

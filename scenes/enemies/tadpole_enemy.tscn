@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn0j7c0em5hxh"]
+[gd_scene load_steps=15 format=3 uid="uid://dn0j7c0em5hxh"]
 
 [ext_resource type="Script" path="res://scenes/enemies/tadpole_enemy.gd" id="1_kylkv"]
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_ogn3x"]
@@ -82,7 +82,7 @@ script = ExtResource("1_kylkv")
 bounce_height = 50.0
 bounce_speed = 3.0
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="2"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("CanvasItemMaterial_44u0n")
 position = Vector2(-2, 198)
 scale = Vector2(4, 4)
