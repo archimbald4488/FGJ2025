@@ -5,6 +5,7 @@ signal player_died
 const IFRAME_TIME = 1.0
 
 @onready var sprite = $Sprite2D
+@onready var enemy_hit = $EnemyHit
 @export var speed: int
 @export var health: int
 @export var damage: int
@@ -119,6 +120,7 @@ func _deactivate_iframes():
 func _on_attack_body_entered(body: Node2D) -> void:
 	print("Body entered:", body)
 	if body.is_in_group("Enemy"):
+		enemy_hit.play()
 		body.take_damage(damage)
 
 
