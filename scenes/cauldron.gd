@@ -6,7 +6,7 @@ extends Node2D
 @export var player: CharacterBody2D
 var timer: Timer
 const SPAWN_MAX_RADIUS = 320
-const SPAWN_MIN_RADIUS = 40
+const SPAWN_MIN_RADIUS = 130
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,7 +58,7 @@ func spawn_enemy_with_bubble():
 func animate_bubble(target_position: Vector2):
 	var bubble_scene = preload("res://scenes/bubble.tscn")
 	var bubble = bubble_scene.instantiate()
-	bubble.scale = Vector2(0.08, 0.08)
+	bubble.scale = Vector2(0.15, 0.15)
 	add_child(bubble)
 
 	# Start the bubble animation
