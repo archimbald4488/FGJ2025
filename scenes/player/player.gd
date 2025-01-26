@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal player_died
 
+const IFRAME_TIME = 1.0
+
 @export var speed: int
 @export var health: int
 @export var damage: int
@@ -10,6 +12,7 @@ signal player_died
 var input = Vector2.ZERO
 var is_ready = false
 var angle: float
+var is_iframe_active = false
 
 const START_JINGLE_DURATION = 1.8
 const END_JINGLE_DURATION = 6.9  # nice
@@ -21,6 +24,7 @@ func _ready():
 func start():
 	_handle_music_on_start()
 	is_ready = true
+	is_iframe_active = false
 
 
 func _handle_music_on_start():
@@ -86,7 +90,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 
 		var collided_object = collision.get_collider()
-		if collided_object and collided_object.is_in_group("Enemy"):
+		if collided_object and collided_object.is_in_group("Enemy") and not is_iframe_active:
 			print("Collided with an enemy!")
 			health -= 1
 			$Camera2D/HUD.update_health(health)
@@ -94,7 +98,19 @@ func _physics_process(delta):
 				print("player died.")
 				game_over()
 				emit_signal("player_died")
+			else: 
+				is_iframe_active = true
+				var timer = Timer.new()
+				timer.wait_time = IFRAME_TIME
+				timer.one_shot = true
+				timer.timeout.connect(_deactivate_iframes)
+				add_child(timer)
+				timer.start()
 				
+
+func _deactivate_iframes():
+	is_iframe_active = false
+
 	
 #Check if enemy is in attack hitbox and deal damage
 func _on_attack_body_entered(body: Node2D) -> void:
