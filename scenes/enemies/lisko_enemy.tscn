@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bts2c6aju5lf1"]
+[gd_scene load_steps=5 format=3 uid="uid://l3lobpka7dek"]
 
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_m28aj"]
 [ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="2_rvi1j"]
@@ -9,12 +9,15 @@ radius = 25.0
 height = 95.0
 
 [node name="LiskoEnemy" instance=ExtResource("1_m28aj")]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("2_rvi1j")
+health = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_5msiq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_qx2gs")
 offset = Vector2(200, -100)

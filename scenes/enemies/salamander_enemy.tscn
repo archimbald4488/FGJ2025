@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://53mynoyixwnu"]
+[gd_scene load_steps=5 format=3 uid="uid://dx7pxcv3eust"]
 
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_8hs4m"]
 [ext_resource type="Script" path="res://scenes/enemies/salamander_enemy.gd" id="2_rfpux"]
@@ -15,10 +15,10 @@ script = ExtResource("2_rfpux")
 fireball_cooldown = 2.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_xyc8y")
 offset = Vector2(100, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_7aqg7")

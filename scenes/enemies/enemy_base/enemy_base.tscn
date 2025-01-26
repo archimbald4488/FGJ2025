@@ -1,15 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpnat8643otl7"]
+[gd_scene load_steps=2 format=3 uid="uid://cpnat8643otl7"]
 
 [ext_resource type="Script" path="res://new_enemy_base.gd" id="1_gx3hh"]
-[ext_resource type="AudioStream" uid="uid://dwk0h53xb7hwb" path="res://assets/Effects/bonk.mp3" id="2_tqn62"]
 
 [node name="EnemyBase" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_gx3hh")
-
-[node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_tqn62")
-volume_db = 1.917
-attenuation = 0.0883884
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
