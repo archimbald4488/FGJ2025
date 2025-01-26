@@ -12,12 +12,22 @@ var duration: float = 3.0  # Time in seconds before the popup disappears
 var is_visible: bool = false
 var offset: Vector2 = Vector2(0, -50)  # Offset above the enemy position
 var funny_arr_messages: Array = [
-	"Arr! You'll never take me gold!",
-	"Arrr! Ye scallywag!",
-	"Avast! Enemy off the starboard bow!",
-	"Shiver me timbers! It's a fight!",
-	"Arr, matey! Back to Davy Jones' locker with ye!",
-	"Ye think ye can best me, landlubber?"
+	"What NO MONEY!?!",
+	"You will die!",
+	"Die, you rebel scum!",
+	"Uli uli uuu!",
+	"Arr",
+	"Kill the keittokeisartti!",
+	"Kymmeneskortti juodaan tuplana.",
+	"messages[randi() % messages.size()])",
+	"FGJ2025",
+	"Arrr!",
+	"Mököarttii!",
+	"For the Great Sourcerer Artti!",
+	"Feed us",
+	"Missä on Tuomas?",
+	"You never get Thomas from the black hand",
+	"10 of spades"
 ]
 
 # Nodes

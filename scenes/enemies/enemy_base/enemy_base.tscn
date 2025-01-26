@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpnat8643otl7"]
+[gd_scene load_steps=3 format=3 uid="uid://cpnat8643otl7"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy_base/enemy_base.gd" id="1_pkpda"]
 [ext_resource type="Script" path="res://scenes/enemies/enemy_base/popup.gd" id="3_c7366"]
@@ -18,15 +18,15 @@ script = ExtResource("3_c7366")
 
 [node name="Panel" type="Panel" parent="EnemyPopup"]
 clip_contents = true
-custom_minimum_size = Vector2(1200, 200)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
-offset_right = 1800.0
-offset_bottom = 200.0
+offset_right = 600.0
+offset_bottom = 100.0
 
 [node name="Label" type="Label" parent="EnemyPopup/Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
