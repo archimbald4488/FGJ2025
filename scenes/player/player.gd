@@ -4,6 +4,7 @@ signal player_died
 
 const IFRAME_TIME = 1.0
 
+@onready var sprite = $Sprite2D
 @export var speed: int
 @export var health: int
 @export var damage: int
@@ -100,6 +101,7 @@ func _physics_process(delta):
 				emit_signal("player_died")
 			else: 
 				is_iframe_active = true
+				sprite.self_modulate.a = 0.2
 				var timer = Timer.new()
 				timer.wait_time = IFRAME_TIME
 				timer.one_shot = true
@@ -110,6 +112,7 @@ func _physics_process(delta):
 
 func _deactivate_iframes():
 	is_iframe_active = false
+	sprite.self_modulate.a = 1
 
 	
 #Check if enemy is in attack hitbox and deal damage
