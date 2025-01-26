@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://du3qbe8xtpltu"]
+[gd_scene load_steps=13 format=3 uid="uid://cbpn866xd4ifl"]
 
-[ext_resource type="PackedScene" uid="uid://bhmh0mqvup6kb" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_bjqni"]
+[ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/new_enemy_base.tscn" id="1_qk7bg"]
 [ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_idxit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5v6d"]
@@ -35,7 +35,7 @@ region = Rect2(96, 0, 96, 64)
 atlas = ExtResource("2_idxit")
 region = Rect2(0, 0, 96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bllid"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqm85"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -67,20 +67,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7tuxi"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aupyf"]
 radius = 155.0
 height = 394.0
 
-[node name="NewLiskoEnemy" instance=ExtResource("1_bjqni")]
+[node name="NewLiskoEnemy" instance=ExtResource("1_qk7bg")]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="EnemyBaseScript" index="2"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-2014, 1174)
 scale = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_bllid")
+sprite_frames = SubResource("SpriteFrames_oqm85")
 animation = &"walk"
 autoplay = "walk"
 offset = Vector2(100, -60)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBaseScript" index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 position = Vector2(-4, -26)
-shape = SubResource("CapsuleShape2D_7tuxi")
+shape = SubResource("CapsuleShape2D_aupyf")

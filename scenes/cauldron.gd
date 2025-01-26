@@ -88,11 +88,7 @@ func spawn_enemy_at_position(position: Vector2):
 	var enemy_scene = preload("res://scenes/enemies/new_lisko_enemy.tscn")
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
-	# Connect the body_entered signal to the _on_attack_body_entered method
-	var collision = enemy.get_node("EnemyBaseScript/CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
-	collision.body_entered.connect(Callable(player, "_on_attack_body_entered"))
-	var enemy_script = enemy.get_node("EnemyBaseScript")
-	enemy_script.chase_target = player
-	enemy_script.max_speed = 30
+	enemy.chase_target = player
+	enemy.max_speed = 30
 	enemy.scale = Vector2(0.07, 0.07)
 	add_child(enemy)
