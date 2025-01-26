@@ -18,9 +18,9 @@ const SPAWN_CONFIG = {
 }
 const ENEMY_CONFIG = {
 	"weights": {
-		0: 0.5,
-		1: 0.3,
-		2: 0.2
+		0: 5,
+		1: 3,
+		2: 2
 	},
 	"stats": {
 		0: {
@@ -132,18 +132,30 @@ func spawn_powerup_at_position(position: Vector2):
 	powerup.position = position
 	powerup.scale = Vector2(0.15, 0.15)
 	add_child(powerup)
+
+
+func _sum(list: Array) -> int:
+	var sum = 0
+	for item in list:
+		sum += item
+	return sum
+
+
+func _get_random_enemy_type() -> int:
+	var max = _sum(ENEMY_CONFIG["weights"].values())
+	var rng = randi_range(1, max)
+	for key in ENEMY_CONFIG["weights"]:
+		rng -= ENEMY_CONFIG["weights"][key]
+		if rng <= 0:
+			return key
+	return 0
 	
 
 # Spawn an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
 	spawned += 1
 	print("Enemy spawned at: ", position)
-	var enemy_type: int = 2
-	var enemy_rng = randf();
-	if enemy_rng < ENEMY_CONFIG["weights"][0]:
-		enemy_type = 0
-	elif enemy_rng > (1-ENEMY_CONFIG["weights"][1]):
-		enemy_type = 1
+	var enemy_type = _get_random_enemy_type()
 	var enemy_scene
 	if enemy_type == 0:
 		enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
