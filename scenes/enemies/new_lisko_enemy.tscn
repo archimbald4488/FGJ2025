@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxni1ty8vn2fp"]
+[gd_scene load_steps=13 format=3 uid="uid://du3qbe8xtpltu"]
 
 [ext_resource type="PackedScene" uid="uid://bhmh0mqvup6kb" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_bjqni"]
 [ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_idxit"]
