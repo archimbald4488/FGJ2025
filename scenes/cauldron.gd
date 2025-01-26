@@ -10,9 +10,9 @@ const SPAWN_MAX_RADIUS = 320
 const SPAWN_MIN_RADIUS = 130
 
 const SPAWN_CONFIG = {
-	"max_spawn_interval": 3.0,
+	"max_spawn_interval": 4.0,
 	"min_spawn_interval": 0.8,
-	"interval_step": 0.05,
+	"interval_step": 0.03,
 	"enemy_percentage": 0.7,
 	"bubble_float_time": 5.5
 }
@@ -25,19 +25,19 @@ const ENEMY_CONFIG = {
 	"stats": {
 		0: {
 			"speed_base": 30,
-			"speed_multiplier": 2,
+			"speed_multiplier": 1,
 			"health_base": 2,
 			"health_divider": 8
 		},
 		1: {
 			"speed_base": 20,
-			"speed_multiplier": 1,
+			"speed_multiplier": 0.5,
 			"health_base": 1,
 			"health_divider": 12
 		},
 		2: {
 			"speed_base": 40,
-			"speed_multiplier": 1,
+			"speed_multiplier": 1.5,
 			"health_base": 2,
 			"health_divider": 10
 		}

@@ -464,8 +464,6 @@ layer_2/tile_data = PackedInt32Array(589787, 786432, 8, 655323, 786432, 9, 78639
 position = Vector2(-1, 34)
 scale = Vector2(0.1, 0.1)
 health = 10
-accel = 0
-friction = 0
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

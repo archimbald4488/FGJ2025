@@ -9,7 +9,7 @@ const POWERUP_WEIGHTS = {
 }
 const POWERUP_CONFIG = {
 	"speed": {
-		"speed_increase": 10,
+		"speed_increase": 15,
 		"friction_increase": 30
 	},
 	"damage": {
