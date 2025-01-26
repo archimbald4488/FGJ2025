@@ -10,7 +10,7 @@ signal popup_closed()
 var text: String = "Enemy Spotted!"
 var duration: float = 3.0  # Time in seconds before the popup disappears
 var is_visible: bool = false
-var offset: Vector2 = Vector2(0, -50)  # Offset above the enemy position
+var offset: Vector2 = Vector2(0, 0)  # Offset above the enemy position
 var funny_arr_messages: Array = [
 	"What NO MONEY!?!",
 	"You will die!",
@@ -31,7 +31,7 @@ var funny_arr_messages: Array = [
 ]
 
 # Nodes
-@onready var label: Label = $Panel/Label
+@onready var label: Label = $PanelContainer/Label
 
 func _ready():
 	# Hide popup initially
