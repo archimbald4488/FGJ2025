@@ -4,6 +4,8 @@ extends CharacterBody2D
 var health: Health
 var movement: Movement
 var navigation: NavigationAgent2D
+var popup: EnemyPopup
+
 @export var hud: CanvasLayer
 @export var chase_target: CharacterBody2D
 @export var max_health: int
@@ -24,6 +26,7 @@ func _ready() -> void:
 	add_to_group("Enemy", true)
 	self._init_health(max_health)
 	self._init_movement(max_speed)
+	popup = $EnemyPopup
 	set_physics_process(false)
 	call_deferred("wait_for_physics")
 
@@ -42,6 +45,11 @@ func _physics_process(delta:float) -> void:
 	velocity = global_position.direction_to(navigation.get_next_path_position()) * movement.max_speed
 	#velocity = new_velocity
 	rotation = velocity.angle()
+	
+	var rand = randi_range(1,1024)
+	if rand == 1:
+		_yell()
+	
 	move_and_slide()
 
 func _health_changed(new_health: int):
@@ -62,3 +70,7 @@ func heal(amount: int):
 func deal_damage(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(self.damage)		
+
+
+func _yell():
+	popup.show_random_message(2)
