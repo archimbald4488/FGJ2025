@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://crmw1jmbi2jbj"]
+
+[ext_resource type="Script" path="res://scenes/projectile/projectile.gd" id="1_qs5t4"]
+[ext_resource type="Texture2D" uid="uid://cngrp6v3qixdy" path="res://assets/Booli/Cauldron0.png" id="2_w5out"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlo0l"]
+
+[node name="projectile" type="Area2D"]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_qs5t4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vlo0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w5out")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

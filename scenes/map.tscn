@@ -504,5 +504,9 @@ script = ExtResource("6_2idbb")
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(-170, 0)
 
+[node name="Difficulty" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="player_died" from="Player" to="Player/Camera2D/HUD" method="show_game_over"]
 [connection signal="start_game" from="Player/Camera2D/HUD" to="." method="new_game"]
+[connection signal="timeout" from="Difficulty" to="." method="_on_difficulty_timeout"]
