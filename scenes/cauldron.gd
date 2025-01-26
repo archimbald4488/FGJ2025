@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var spawn_interval = 5.0
-@export var enemy_percentage = 0.8
+@export var spawn_interval = 2.0
+@export var enemy_percentage = 0.99
 @export var camera: Camera2D
 @export var player: CharacterBody2D
 const SPAWN_MAX_RADIUS = 320
@@ -78,14 +78,13 @@ func spawn_powerup_at_position(position: Vector2):
 # Spawn an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
 	print("Enemy spawned at: ", position)
-	var enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
+	var enemy_scene = preload("res://scenes/enemies/lisko_enemy_2.tscn")
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
-	enemy.add_to_group("Enemy", true)
 	# Connect the body_entered signal to the _on_attack_body_entered method
-	var collision = enemy.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
+	var collision = enemy.get_node("EnemyBase/CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
 	collision.connect("body_entered", Callable(player, "_on_attack_body_entered"))
 
-	enemy.target_to_chase = player
+	enemy.get_node("EnemyBase").chase_target = player
 	enemy.scale = Vector2(0.07, 0.07)
 	add_child(enemy)

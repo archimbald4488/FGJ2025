@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://douddfo7hejtv"]
+
+[ext_resource type="Script" path="res://scenes/enemies/lisko_enemy_2.gd" id="1_bn3ex"]
+[ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_0lr5b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5v6d"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45va1"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh7l5"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i53w5"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5jc6"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nscly"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64ljf"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c62d"]
+atlas = ExtResource("2_0lr5b")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fu80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5v6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45va1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh7l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i53w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5jc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nscly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64ljf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c62d")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="LiskoEnemy2" type="Node2D"]
+script = ExtResource("1_bn3ex")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2014, 1174)
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_3fu80")
+animation = &"walk"
+autoplay = "walk"
+offset = Vector2(100, -60)

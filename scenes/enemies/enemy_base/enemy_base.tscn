@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhmh0mqvup6kb"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_base/enemy_base_script.gd" id="1_m1os3"]
+[ext_resource type="AudioStream" uid="uid://dwk0h53xb7hwb" path="res://assets/Effects/bonk.mp3" id="2_tqn62"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vje15"]
+radius = 155.0
+height = 394.0
+
+[node name="EnemyBase" type="Node2D" groups=["Enemies"]]
+
+[node name="EnemyBaseScript" type="CharacterBody2D" parent="."]
+script = ExtResource("1_m1os3")
+
+[node name="EnemyHit" type="AudioStreamPlayer2D" parent="EnemyBaseScript"]
+stream = ExtResource("2_tqn62")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="EnemyBaseScript"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBaseScript"]
+position = Vector2(-4, -26)
+shape = SubResource("CapsuleShape2D_vje15")
