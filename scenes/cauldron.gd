@@ -6,7 +6,7 @@ extends Node2D
 @export var player: CharacterBody2D
 var timer: Timer
 const SPAWN_MAX_RADIUS = 320
-const SPAWN_MIN_RADIUS = 40
+const SPAWN_MIN_RADIUS = 130
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
