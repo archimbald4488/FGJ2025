@@ -4,7 +4,7 @@ extends Node2D
 
 @export var bubble_float_time = 5.0
 @export var spawn_interval = 2.0
-@export var enemy_percentage = 0.99
+@export var enemy_percentage = 0.80
 @export var camera: Camera2D
 @export var player: CharacterBody2D
 var timer: Timer
