@@ -55,8 +55,8 @@ func _dead():
 	queue_free()
 
 func take_damage(amount: int):
-	health.take_damage(amount)
 	on_hit_sound_effect.play()
+	health.take_damage(amount)
 
 func heal(amount: int):
 	health.heal(amount)

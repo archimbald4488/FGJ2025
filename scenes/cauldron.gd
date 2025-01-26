@@ -90,6 +90,7 @@ func spawn_enemy_at_position(position: Vector2):
 	enemy.position = position
 	enemy.chase_target = player
 	enemy.max_speed = 30
+	enemy.max_health = 3
 	enemy.scale = Vector2(0.07, 0.07)
 	enemy.hud = camera.get_node("HUD")
 	add_child(enemy)
