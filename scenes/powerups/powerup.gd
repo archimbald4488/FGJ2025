@@ -52,7 +52,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.damage += POWERUP_CONFIG["damage"]["damage_increase"]
 		body.display_message("Damage up!")
 	elif powerup == "health":
-		body.health += POWERUP_CONFIG["health"]["health_returned"]
+		body.heal(POWERUP_CONFIG["health"]["health_returned"])
 		body.display_message("Health potion!")
 	else:
 		body.display_message("You get nothing!")
