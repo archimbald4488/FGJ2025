@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dn0j7c0em5hxh"]
+[gd_scene load_steps=5 format=3 uid="uid://dn0j7c0em5hxh"]
 
 [ext_resource type="Script" path="res://scenes/enemies/tadpole_enemy.gd" id="1_kylkv"]
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_ogn3x"]
@@ -92,7 +92,7 @@ frame_progress = 0.680535
 offset = Vector2(0, -50)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 light_mask = 4
 visibility_layer = 4
 position = Vector2(0, -5)

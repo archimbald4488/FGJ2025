@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dx7pxcv3eust"]
+[gd_scene load_steps=5 format=3 uid="uid://dx7pxcv3eust"]
 
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_8hs4m"]
 [ext_resource type="Script" path="res://scenes/enemies/salamander_enemy.gd" id="2_rfpux"]
@@ -88,5 +88,5 @@ frame = 4
 frame_progress = 0.824547
 offset = Vector2(100, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_7aqg7")

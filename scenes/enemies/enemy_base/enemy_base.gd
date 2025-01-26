@@ -4,8 +4,6 @@ extends CharacterBody2D
 var health: Health
 var movement: Movement
 var navigation: NavigationAgent2D
-
-@onready var on_hit_sound_effect: AudioStreamPlayer2D = $EnemyHit
 @export var hud: CanvasLayer
 @export var chase_target: CharacterBody2D
 @export var max_health: int
@@ -55,7 +53,6 @@ func _dead():
 	queue_free()
 
 func take_damage(amount: int):
-	on_hit_sound_effect.play()
 	health.take_damage(amount)
 
 func heal(amount: int):
