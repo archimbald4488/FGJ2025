@@ -5,3 +5,4 @@
 # Audio files
 *.wav
 !*.wav.import
+godot.windows.opt.tools.64.exe
