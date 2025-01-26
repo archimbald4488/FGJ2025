@@ -4,6 +4,7 @@ extends Node2D
 @export var enemy_percentage = 0.8
 @export var camera: Camera2D
 @export var player: CharacterBody2D
+var timer: Timer
 const SPAWN_MAX_RADIUS = 320
 const SPAWN_MIN_RADIUS = 40
 
@@ -18,12 +19,18 @@ func _process(delta: float) -> void:
 
 
 func start_spawning():
-	var timer = Timer.new()
+	timer = Timer.new()
 	timer.wait_time = spawn_interval
 	timer.one_shot = false
 	timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
 	add_child(timer)
 	timer.start()
+	player.player_died.connect(stop_spawning)
+
+func stop_spawning():
+	timer.stop()
+	get_tree().call_group("Enemy", "queue_free")
+	
 
 # Called each time the timer triggers
 func _on_spawn_timer_timeout():
