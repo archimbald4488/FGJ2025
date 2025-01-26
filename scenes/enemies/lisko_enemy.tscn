@@ -1,20 +1,87 @@
-[gd_scene load_steps=5 format=3 uid="uid://bts2c6aju5lf1"]
+[gd_scene load_steps=14 format=3 uid="uid://d4lg643btasi1"]
 
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_m28aj"]
+[ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_rdma8"]
 [ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="2_rvi1j"]
-[ext_resource type="Texture2D" uid="uid://0bd7q8qfrrb" path="res://assets/FGJ Assets/02. Characters/FGJ25_Diplocaulus3.PNG" id="3_qx2gs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5msiq"]
 radius = 25.0
-height = 95.0
+height = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2cdj"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3mbs"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3iv6"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfbgh"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it7cq"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjhl2"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgkkp"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dxt0"]
+atlas = ExtResource("2_rdma8")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h62ba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2cdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3mbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3iv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfbgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it7cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjhl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgkkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dxt0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="LiskoEnemy" instance=ExtResource("1_m28aj")]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_rvi1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_5msiq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("3_qx2gs")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(-601, 301)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_h62ba")
+autoplay = "default"
 offset = Vector2(200, -100)

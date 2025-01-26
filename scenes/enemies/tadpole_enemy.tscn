@@ -1,12 +1,79 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjkrwkfbas25"]
+[gd_scene load_steps=15 format=3 uid="uid://dn0j7c0em5hxh"]
 
-[ext_resource type="Texture2D" uid="uid://cli5a8df4tib" path="res://assets/FGJ Assets/02. Characters/FGJ25_Tadpole1.png" id="1_jd3w3"]
 [ext_resource type="Script" path="res://scenes/enemies/tadpole_enemy.gd" id="1_kylkv"]
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_ogn3x"]
+[ext_resource type="Texture2D" uid="uid://br0f601erey3c" path="res://assets/Sunnyside assets/SUNNYSIDE_WORLD_GOBLIN_V0.1/PNG/spr_jump_strip9.png" id="3_u4yls"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_44u0n"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqo5f"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_068r1"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2m1j"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe1sr"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8gky"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk2ri"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5s62"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f4iv"]
+atlas = ExtResource("3_u4yls")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nc3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqo5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_068r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2m1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe1sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8gky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk2ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5s62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f4iv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvttm"]
-radius = 18.0
-height = 110.0
+radius = 35.0
+height = 70.0
 
 [node name="TadpoleEnemy" instance=ExtResource("1_ogn3x")]
 collision_layer = 4
@@ -14,14 +81,19 @@ collision_mask = 4
 script = ExtResource("1_kylkv")
 bounce_height = 50.0
 bounce_speed = 3.0
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_jd3w3")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("CanvasItemMaterial_44u0n")
+position = Vector2(-2, 198)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5nc3h")
+autoplay = "default"
+frame_progress = 0.680535
 offset = Vector2(0, -50)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 light_mask = 4
 visibility_layer = 4
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_cvttm")
