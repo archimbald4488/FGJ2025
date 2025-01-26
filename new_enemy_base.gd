@@ -23,7 +23,7 @@ func _init_movement(max_speed:int):
 
 
 func _ready() -> void:
-	add_to_group("Enemy")
+	add_to_group("Enemy", true)
 	self._init_health(max_health)
 	self._init_movement(max_speed)
 	set_physics_process(false)

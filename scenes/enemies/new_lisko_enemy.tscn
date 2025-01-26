@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbpn866xd4ifl"]
+[gd_scene load_steps=13 format=3 uid="uid://l3lobpka7dek"]
 
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/new_enemy_base.tscn" id="1_qk7bg"]
 [ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_idxit"]
@@ -67,11 +67,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aupyf"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bqx8"]
 radius = 155.0
 height = 394.0
 
 [node name="NewLiskoEnemy" instance=ExtResource("1_qk7bg")]
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-2014, 1174)
@@ -83,4 +85,4 @@ offset = Vector2(100, -60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 position = Vector2(-4, -26)
-shape = SubResource("CapsuleShape2D_aupyf")
+shape = SubResource("CapsuleShape2D_0bqx8")

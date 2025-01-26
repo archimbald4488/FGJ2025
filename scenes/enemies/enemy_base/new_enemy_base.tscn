@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://dwk0h53xb7hwb" path="res://assets/Effects/bonk.mp3" id="2_6ijnw"]
 
 [node name="NewEnemyBase" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_75web")
 
 [node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
