@@ -85,12 +85,19 @@ func spawn_powerup_at_position(position: Vector2):
 # Spawn an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
 	print("Enemy spawned at: ", position)
-	var enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
+	var enemy_type = randi() % 3
+	var enemy_scene
+	if enemy_type == 0:
+		enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
+	elif enemy_type == 1:
+		enemy_scene = preload("res://scenes/enemies/salamander_enemy.tscn")
+	elif enemy_type == 2:
+		enemy_scene = preload("res://scenes/enemies/tadpole_enemy.tscn")
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
 	enemy.chase_target = player
 	enemy.max_speed = 30
 	enemy.max_health = 3
-	enemy.scale = Vector2(0.07, 0.07)
+	enemy.scale = Vector2(0.3, 0.3)
 	enemy.hud = camera.get_node("HUD")
 	add_child(enemy)
