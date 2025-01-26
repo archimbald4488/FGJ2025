@@ -238,6 +238,9 @@ libraries = {
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(330, -36)
 
-[connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_body_entered"]
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(330, -36)
+
 [connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_2_body_entered"]
+[connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_body_entered"]
 [connection signal="animation_finished" from="AttackNew" to="." method="_on_attack_new_animation_finished"]

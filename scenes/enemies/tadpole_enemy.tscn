@@ -1,22 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn0j7c0em5hxh"]
+[gd_scene load_steps=5 format=3 uid="uid://dmjkrwkfbas25"]
 
 [ext_resource type="Texture2D" uid="uid://cli5a8df4tib" path="res://assets/FGJ Assets/02. Characters/FGJ25_Tadpole1.png" id="1_jd3w3"]
 [ext_resource type="Script" path="res://scenes/enemies/tadpole_enemy.gd" id="1_kylkv"]
+[ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_ogn3x"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
-radius = 86.78
-height = 479.79
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvttm"]
+radius = 18.0
+height = 110.0
 
-[node name="TadpoleEnemy" type="CharacterBody2D"]
-collision_mask = 0
-motion_mode = 1
+[node name="TadpoleEnemy" instance=ExtResource("1_ogn3x")]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_kylkv")
+bounce_height = 50.0
+bounce_speed = 3.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_vqcsq")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_jd3w3")
-offset = Vector2(0, -40)
+offset = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CapsuleShape2D_cvttm")
