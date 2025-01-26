@@ -153,3 +153,7 @@ func _on_attack_new_animation_finished(anim_name: StringName) -> void:
 
 func display_message(message: String):
 	$Camera2D/HUD.small_message(message, 2)
+
+func heal(amount: int) -> void:
+	health = min(PLAYER_CONFIG["initial_health"], health + amount)
+	$Camera2D/HUD.update_health(health)
