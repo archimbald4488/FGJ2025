@@ -23,10 +23,7 @@ func new_game():
 	$Player.position = $StartPosition.position
 	$Cauldron.camera = $Player/Camera2D
 	$Cauldron.player = $Player
+	$Player.hud = $Player/Camera2D/HUD
 	$Player.show()
-	$Player.health = 10
-	$Player/Camera2D/HUD.update_health(10)
-	$Player/Camera2D/HUD.update_damage(1)
-	$Player/Camera2D/HUD.update_score(0)
 	$Player.start()
 	$Cauldron.start_spawning()
