@@ -196,11 +196,12 @@ _data = {
 "attack": SubResource("Animation_k852u")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="int" type="CharacterBody2D"]
 position = Vector2(614, 294)
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_r6wso")
+speed = 200
 health = 5
 damage = 1
 
@@ -233,6 +234,12 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_8xmyx")
 }
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(330, -36)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(330, -36)
 
 [connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_2_body_entered"]
 [connection signal="body_entered" from="Sprite2D/Attack2" to="." method="_on_attack_body_entered"]

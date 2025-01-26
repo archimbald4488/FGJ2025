@@ -8,9 +8,10 @@ var start_position: Vector2  # Cauldron's position
 var control_position: Vector2  # Control point to define the curve
 var time_elapsed: float = 0.0  # Time elapsed during the animation
 
-func start_animation(from_position: Vector2, to_position: Vector2):
+func start_animation(from_position: Vector2, to_position: Vector2, duration: float):
 	start_position = from_position
 	target_position = to_position
+	animation_time = duration
 
 	# Calculate the control point (midway between start and target, and above for a curve)
 	control_position = (start_position + target_position) / 2

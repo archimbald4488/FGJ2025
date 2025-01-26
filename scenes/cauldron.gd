@@ -1,10 +1,14 @@
 extends Node2D
 
+@onready var game_timer = $GameTime
+
+@export var bubble_float_time = 5.0
 @export var spawn_interval = 2.0
-@export var enemy_percentage = 0.99
+@export var enemy_percentage = 0.80
 @export var camera: Camera2D
 @export var player: CharacterBody2D
 var timer: Timer
+var spawned: int = 0
 const SPAWN_MAX_RADIUS = 320
 const SPAWN_MIN_RADIUS = 130
 
@@ -19,6 +23,7 @@ func _process(delta: float) -> void:
 
 
 func start_spawning():
+	spawned = 0
 	timer = Timer.new()
 	timer.wait_time = spawn_interval
 	timer.one_shot = false
@@ -29,6 +34,15 @@ func start_spawning():
 
 func stop_spawning():
 	timer.stop()
+	_kill_enemies()
+	var rekill_timer = Timer.new()
+	rekill_timer.wait_time = bubble_float_time
+	rekill_timer.one_shot = true
+	rekill_timer.connect("timeout", _kill_enemies)
+	add_child(rekill_timer)
+	rekill_timer.start()
+
+func _kill_enemies():
 	get_tree().call_group("Enemy", "queue_free")
 	
 
@@ -45,7 +59,7 @@ func spawn_enemy_with_bubble():
 	animate_bubble(spawn_position)
 
 	# Delay to match bubble animation timing
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(bubble_float_time).timeout
 
 	# Spawn the enemy and powerups at the calculated position
 	var rng = randf()
@@ -62,7 +76,7 @@ func animate_bubble(target_position: Vector2):
 	add_child(bubble)
 
 	# Start the bubble animation
-	bubble.start_animation(self.global_position, target_position)
+	bubble.start_animation(self.global_position, target_position, bubble_float_time)
 
 # Calculate a random position within the camera's view and far enough from the player
 func get_random_spawn_position(player_position: Vector2) -> Vector2:
@@ -84,6 +98,7 @@ func spawn_powerup_at_position(position: Vector2):
 
 # Spawn an enemy at the specified position
 func spawn_enemy_at_position(position: Vector2):
+	spawned += 1
 	print("Enemy spawned at: ", position)
 	var enemy_type = randi() % 3
 	var enemy_scene
@@ -96,8 +111,8 @@ func spawn_enemy_at_position(position: Vector2):
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
 	enemy.chase_target = player
-	enemy.max_speed = 30
-	enemy.max_health = 3
+	enemy.max_speed = 30 + spawned
+	enemy.max_health = 3 + spawned / 10
 	enemy.scale = Vector2(0.3, 0.3)
 	enemy.hud = camera.get_node("HUD")
 	add_child(enemy)

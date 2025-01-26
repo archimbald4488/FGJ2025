@@ -4,6 +4,8 @@ extends Node2D
 @onready var player = $Player  # Reference to the player node
 @onready var camera = $Player/Camera2D  # Reference to the camera node
 @onready var hud = $Player/Camera2D/HUD
+#@onready var enemy = $LiskoEnemy
+@onready var enemy_hp: int = 2
 
 @export var spawn_interval: float = 3.0  # Time in seconds between spawns
 @export var min_spawn_distance: float = 100.0  # Minimum distance from the player for spawn
