@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_ogn3x"]
 [ext_resource type="Texture2D" uid="uid://br0f601erey3c" path="res://assets/Sunnyside assets/SUNNYSIDE_WORLD_GOBLIN_V0.1/PNG/spr_jump_strip9.png" id="3_u4yls"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvttm"]
+radius = 35.0
+height = 70.0
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_44u0n"]
 blend_mode = 2
 
@@ -71,10 +75,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvttm"]
-radius = 35.0
-height = 70.0
-
 [node name="TadpoleEnemy" instance=ExtResource("1_ogn3x")]
 collision_layer = 4
 collision_mask = 4
@@ -82,7 +82,13 @@ script = ExtResource("1_kylkv")
 bounce_height = 50.0
 bounce_speed = 3.0
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_cvttm")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="3"]
 material = SubResource("CanvasItemMaterial_44u0n")
 position = Vector2(-2, 198)
 scale = Vector2(4, 4)
@@ -91,9 +97,3 @@ autoplay = "default"
 frame_progress = 0.680535
 offset = Vector2(0, -50)
 metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_cvttm")

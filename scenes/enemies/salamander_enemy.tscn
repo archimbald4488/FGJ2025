@@ -4,6 +4,10 @@
 [ext_resource type="Script" path="res://scenes/enemies/salamander_enemy.gd" id="2_rfpux"]
 [ext_resource type="Texture2D" uid="uid://diyaw317fhejm" path="res://assets/Sunnyside assets/SUNNYSIDE_WORLD_GOBLIN_V0.1/PNG/spr_run_strip8.png" id="3_mymks"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7aqg7"]
+radius = 24.0
+height = 54.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_33keh"]
 atlas = ExtResource("3_mymks")
 region = Rect2(672, 0, 96, 64)
@@ -68,10 +72,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7aqg7"]
-radius = 24.0
-height = 54.0
-
 [node name="SalamanderEnemy" instance=ExtResource("1_8hs4m")]
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
@@ -79,7 +79,10 @@ collision_mask = 4
 script = ExtResource("2_rfpux")
 fireball_cooldown = 2.0
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_7aqg7")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(-301, 1)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qn4qy")
@@ -87,6 +90,3 @@ autoplay = "default"
 frame = 4
 frame_progress = 0.824547
 offset = Vector2(100, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
-shape = SubResource("CapsuleShape2D_7aqg7")

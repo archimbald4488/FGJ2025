@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://l3lobpka7dek"]
+[gd_scene load_steps=14 format=3 uid="uid://d4lg643btasi1"]
 
 [ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_m28aj"]
 [ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_rdma8"]
@@ -77,7 +77,6 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("2_rvi1j")
-health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_5msiq")
