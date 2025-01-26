@@ -8,7 +8,7 @@ var current_speed: float
 
 # Consts
 @export var max_speed: float
-@export var acceleration: float 
+@export var acceleration: float
 @export var friction: float
 
 static func from_args(max_speed:float, acceleration:float, friction: float) -> Movement:

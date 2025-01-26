@@ -1,11 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4lg643btasi1"]
+[gd_scene load_steps=13 format=3 uid="uid://l3lobpka7dek"]
 
-[ext_resource type="Script" path="res://scenes/enemies/lisko_enemy.gd" id="1_u6k1c"]
+[ext_resource type="PackedScene" uid="uid://cpnat8643otl7" path="res://scenes/enemies/enemy_base/enemy_base.tscn" id="1_fhdog"]
 [ext_resource type="Texture2D" uid="uid://kl7j3anwui7q" path="res://assets/Sunnyside assets/CHARACTERS/ANIMATION/SKELETON/PNG/skeleton_walk_strip8.png" id="2_rdma8"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqcsq"]
-radius = 155.0
-height = 394.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5v6d"]
 atlas = ExtResource("2_rdma8")
@@ -39,7 +35,7 @@ region = Rect2(96, 0, 96, 64)
 atlas = ExtResource("2_rdma8")
 region = Rect2(0, 0, 96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ealuh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqm85"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -71,27 +67,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="LiskoEnemy" type="CharacterBody2D" groups=["Enemy"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bqx8"]
+radius = 155.0
+height = 394.0
+
+[node name="LiskoEnemy" instance=ExtResource("1_fhdog")]
 collision_layer = 4
-collision_mask = 10
-motion_mode = 1
-script = ExtResource("1_u6k1c")
-max_health = 20
-max_speed = 180
-damage = 1
-metadata/_edit_group_ = true
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -26)
-shape = SubResource("CapsuleShape2D_vqcsq")
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-2014, 1174)
 scale = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_ealuh")
+sprite_frames = SubResource("SpriteFrames_oqm85")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.585881
 offset = Vector2(100, -60)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-4, -26)
+shape = SubResource("CapsuleShape2D_0bqx8")

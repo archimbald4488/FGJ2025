@@ -1,11 +1,12 @@
 extends Node2D
 
-@export var spawn_interval = 5.0
-@export var enemy_percentage = 0.8
+@export var spawn_interval = 2.0
+@export var enemy_percentage = 0.99
 @export var camera: Camera2D
 @export var player: CharacterBody2D
+var timer: Timer
 const SPAWN_MAX_RADIUS = 320
-const SPAWN_MIN_RADIUS = 40
+const SPAWN_MIN_RADIUS = 130
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,12 +19,18 @@ func _process(delta: float) -> void:
 
 
 func start_spawning():
-	var timer = Timer.new()
+	timer = Timer.new()
 	timer.wait_time = spawn_interval
 	timer.one_shot = false
 	timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
 	add_child(timer)
 	timer.start()
+	player.player_died.connect(stop_spawning)
+
+func stop_spawning():
+	timer.stop()
+	get_tree().call_group("Enemy", "queue_free")
+	
 
 # Called each time the timer triggers
 func _on_spawn_timer_timeout():
@@ -51,7 +58,7 @@ func spawn_enemy_with_bubble():
 func animate_bubble(target_position: Vector2):
 	var bubble_scene = preload("res://scenes/bubble.tscn")
 	var bubble = bubble_scene.instantiate()
-	bubble.scale = Vector2(0.08, 0.08)
+	bubble.scale = Vector2(0.15, 0.15)
 	add_child(bubble)
 
 	# Start the bubble animation
@@ -81,11 +88,9 @@ func spawn_enemy_at_position(position: Vector2):
 	var enemy_scene = preload("res://scenes/enemies/lisko_enemy.tscn")
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
-	enemy.add_to_group("Enemy", true)
-	# Connect the body_entered signal to the _on_attack_body_entered method
-	var collision = enemy.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
-	collision.connect("body_entered", Callable(player, "_on_attack_body_entered"))
-
 	enemy.chase_target = player
+	enemy.max_speed = 30
+	enemy.max_health = 3
 	enemy.scale = Vector2(0.07, 0.07)
+	enemy.hud = camera.get_node("HUD")
 	add_child(enemy)
