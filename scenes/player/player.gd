@@ -105,3 +105,6 @@ func _on_attack_body_entered(body: Node2D) -> void:
 
 func _on_attack_new_animation_finished(anim_name: StringName) -> void:
 	$Sprite2D.play("Idle animation")
+
+func display_message(message: String):
+	$Camera2D/HUD.small_message(message, 2)
