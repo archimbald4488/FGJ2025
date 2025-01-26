@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal player_died
 
-@export var speed = 200
+@export var speed: int
 @export var health: int
 @export var damage: int
 @export var accel = 5000
@@ -79,6 +79,7 @@ func _physics_process(delta):
 		velocity += (input * accel * delta)
 		velocity = velocity.limit_length(speed)
 	move_and_slide()
+	$Camera2D/HUD.update_damage(damage)
 	
 	# Check if any collisions occurred
 	for i in range(get_slide_collision_count()):

@@ -196,11 +196,12 @@ _data = {
 "attack": SubResource("Animation_k852u")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="int" type="CharacterBody2D"]
 position = Vector2(614, 294)
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_r6wso")
+speed = 200
 health = 5
 damage = 1
 

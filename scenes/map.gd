@@ -4,8 +4,8 @@ extends Node2D
 @onready var player = $Player  # Reference to the player node
 @onready var camera = $Player/Camera2D  # Reference to the camera node
 @onready var hud = $Player/Camera2D/HUD
-@onready var enemy = $LiskoEnemy
-var enemy_hp: int = 2
+#@onready var enemy = $LiskoEnemy
+@onready var enemy_hp: int = 2
 
 @export var spawn_interval: float = 3.0  # Time in seconds between spawns
 @export var min_spawn_distance: float = 100.0  # Minimum distance from the player for spawn
@@ -103,6 +103,9 @@ func spawn_powerup_at_position(position: Vector2):
 	var powerup_scene = preload("res://scenes/powerups/powerup.tscn")
 	var powerup = powerup_scene.instantiate()
 	powerup.position = position
+	powerup.add_to_group("Powerup", true)
+	var collision = powerup.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
+	collision.connect("body_entered", Callable(player, "_on_body_entered"))
 	add_child(powerup)
 	
 
@@ -113,6 +116,8 @@ func spawn_enemy_at_position(position: Vector2):
 	var enemy = enemy_scene.instantiate()
 	enemy.position = position
 	enemy.add_to_group("Enemy", true)
+	enemy.health = enemy_hp
+	print(enemy_hp)
 	# Connect the body_entered signal to the _on_attack_body_entered method
 	var collision = enemy.get_node("CollisionShape2D")  # Assuming your collision node is named "CollisionShape2D"
 	collision.connect("body_entered", Callable(player, "_on_attack_body_entered"))
@@ -124,4 +129,5 @@ func spawn_enemy_at_position(position: Vector2):
 
 func _on_difficulty_timeout() -> void:
 	print("Difficulty increased!")
+	enemy_hp += 2
 	
