@@ -2,15 +2,23 @@ extends CharacterBody2D
 
 signal player_died
 
-const IFRAME_TIME = 1.0
+const PLAYER_CONFIG = {
+	"iframe_time": 1.0,
+	"initial_damage": 1.0,
+	"initial_accel": 5000,
+	"initial_friction": 500,
+	"initial_speed": 90,
+	"initial_health": 10
+}
 
 @onready var sprite = $Sprite2D
 @onready var enemy_hit = $EnemyHit
+@export var hud: CanvasLayer
 @export var speed: int
 @export var health: int
 @export var damage: int
-@export var accel = 5000
-@export var friction = 500
+@export var accel: int
+@export var friction: int
 var input = Vector2.ZERO
 var is_ready = false
 var angle: float
@@ -25,8 +33,24 @@ func _ready():
 
 func start():
 	_handle_music_on_start()
+	_init_values_on_game_start()
+	_init_hud_on_game_start()
+
+
+func _init_values_on_game_start():
 	is_ready = true
 	is_iframe_active = false
+	damage = PLAYER_CONFIG["initial_damage"]
+	health = PLAYER_CONFIG["initial_health"]
+	accel = PLAYER_CONFIG["initial_accel"]
+	friction = PLAYER_CONFIG["initial_friction"]
+	speed = PLAYER_CONFIG["initial_speed"]
+
+
+func _init_hud_on_game_start():
+	hud.update_health(PLAYER_CONFIG["initial_health"])
+	hud.update_damage(PLAYER_CONFIG["initial_damage"])
+	hud.update_score(0)
 
 
 func _handle_music_on_start():
@@ -104,7 +128,7 @@ func _physics_process(delta):
 				is_iframe_active = true
 				sprite.self_modulate.a = 0.2
 				var timer = Timer.new()
-				timer.wait_time = IFRAME_TIME
+				timer.wait_time = PLAYER_CONFIG["iframe_time"]
 				timer.one_shot = true
 				timer.timeout.connect(_deactivate_iframes)
 				add_child(timer)

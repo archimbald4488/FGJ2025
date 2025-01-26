@@ -44,9 +44,10 @@ func update_damage(value: int) -> void:
 	
 func update_score(value: int) -> void:
 	if value != 0:
-		score += 1
+		score += value
 		$ScoreLabel.text = "Your score: " + str(score)
 	else:
+		score = 0
 		$ScoreLabel.text = "Your score: 0"
 	
 # Show game over message
